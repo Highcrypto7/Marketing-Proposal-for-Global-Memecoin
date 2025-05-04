@@ -39,7 +39,7 @@
         }
         iframe {
             width: 100%;
-            height: 720px;
+            min-height: 900px; /* 기본 높이를 더 크게 설정 */
             border: none;
             display: block;
         }
@@ -89,55 +89,55 @@
         <!-- Slide 1 -->
         <div class="slide-container relative" id="slide1">
             <div class="slide-number">1</div>
-            <iframe src="slide1.html" title="Slide 1"></iframe>
+            <iframe src="slide1.html" title="Slide 1" scrolling="no" onload="resizeIframe(this)"></iframe>
         </div>
         
         <!-- Slide 2 -->
         <div class="slide-container relative" id="slide2">
             <div class="slide-number">2</div>
-            <iframe src="slide2.html" title="Slide 2"></iframe>
+            <iframe src="slide2.html" title="Slide 2" scrolling="no" onload="resizeIframe(this)"></iframe>
         </div>
         
         <!-- Slide 3 -->
         <div class="slide-container relative" id="slide3">
             <div class="slide-number">3</div>
-            <iframe src="slide3.html" title="Slide 3"></iframe>
+            <iframe src="slide3.html" title="Slide 3" scrolling="no" onload="resizeIframe(this)"></iframe>
         </div>
         
         <!-- Slide 4 -->
         <div class="slide-container relative" id="slide4">
             <div class="slide-number">4</div>
-            <iframe src="slide4.html" title="Slide 4"></iframe>
+            <iframe src="slide4.html" title="Slide 4" scrolling="no" onload="resizeIframe(this)"></iframe>
         </div>
         
         <!-- Slide 5 -->
         <div class="slide-container relative" id="slide5">
             <div class="slide-number">5</div>
-            <iframe src="slide5.html" title="Slide 5"></iframe>
+            <iframe src="slide5.html" title="Slide 5" scrolling="no" onload="resizeIframe(this)"></iframe>
         </div>
         
         <!-- Slide 6 -->
         <div class="slide-container relative" id="slide6">
             <div class="slide-number">6</div>
-            <iframe src="slide6.html" title="Slide 6"></iframe>
+            <iframe src="slide6.html" title="Slide 6" scrolling="no" onload="resizeIframe(this)"></iframe>
         </div>
         
         <!-- Slide 7 -->
         <div class="slide-container relative" id="slide7">
             <div class="slide-number">7</div>
-            <iframe src="slide7.html" title="Slide 7"></iframe>
+            <iframe src="slide7.html" title="Slide 7" scrolling="no" onload="resizeIframe(this)"></iframe>
         </div>
         
         <!-- Slide 8 -->
         <div class="slide-container relative" id="slide8">
             <div class="slide-number">8</div>
-            <iframe src="slide8.html" title="Slide 8"></iframe>
+            <iframe src="slide8.html" title="Slide 8" scrolling="no" onload="resizeIframe(this)"></iframe>
         </div>
         
         <!-- Slide 9 -->
         <div class="slide-container relative" id="slide9">
             <div class="slide-number">9</div>
-            <iframe src="slide9.html" title="Slide 9"></iframe>
+            <iframe src="slide9.html" title="Slide 9" scrolling="no" onload="resizeIframe(this)"></iframe>
         </div>
     </div>
     
@@ -147,5 +147,48 @@
         <a href="#" class="nav-button" title="Slideshow Mode" onclick="window.location='slideshow.html'"><i class="fas fa-play"></i></a>
         <a href="#slide9" class="nav-button" title="Last Slide"><i class="fas fa-arrow-down"></i></a>
     </div>
+
+    <script>
+        // iframe 높이 자동 조정 함수
+        function resizeIframe(iframe) {
+            try {
+                // iframe 내부 문서의 body 높이 가져오기 시도
+                var body = iframe.contentWindow.document.body;
+                var html = iframe.contentWindow.document.documentElement;
+                
+                // 둘 중 더 큰 높이 선택
+                var height = Math.max(
+                    body.scrollHeight, html.scrollHeight,
+                    body.offsetHeight, html.offsetHeight,
+                    body.clientHeight, html.clientHeight
+                );
+                
+                // 여유 공간 추가 (필요에 따라 조정)
+                iframe.style.height = (height + 50) + 'px';
+            } catch (e) {
+                // 보안 제한으로 접근 불가 시 기본 높이 설정
+                iframe.style.height = '900px';
+                console.log("Could not auto-resize iframe: " + e.message);
+            }
+        }
+
+        // 페이지 로드와 리사이즈 시 모든 iframe 높이 조정
+        window.onload = function() {
+            var iframes = document.querySelectorAll('iframe');
+            iframes.forEach(function(iframe) {
+                // iframe이 이미 로드된 경우 바로 높이 조정
+                if(iframe.contentWindow.document.readyState === 'complete') {
+                    resizeIframe(iframe);
+                }
+            });
+        };
+
+        window.onresize = function() {
+            var iframes = document.querySelectorAll('iframe');
+            iframes.forEach(function(iframe) {
+                resizeIframe(iframe);
+            });
+        };
+    </script>
 </body>
 </html>
