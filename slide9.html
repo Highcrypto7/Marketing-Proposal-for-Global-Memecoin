@@ -1,0 +1,215 @@
+<html lang="en"><head><script src="chrome-extension://jnlgamecbpmbajjfhmmmlhejkemejdma/static/js/inpage.js"></script><script src="chrome-extension://dlcobpjiigpikoobohmabehhmhfoodbb/inpage.js" id="argent-x-extension" data-extension-id="dlcobpjiigpikoobohmabehhmhfoodbb"></script><script src="chrome-extension://nebnhfamliijlghikdgcigoebonmoibm/addToWindow.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #1a1c3b 0%, #2a3074 100%);
+            overflow: hidden;
+        }
+        .crypto-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            z-index: 0;
+        }
+        .title {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .contact-card {
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .contact-method {
+            transition: all 0.2s ease;
+        }
+        .contact-method:hover {
+            transform: translateX(5px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .glow-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: 0;
+        }
+        .thank-you {
+            position: relative;
+            overflow: hidden;
+        }
+        .thank-you::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #FFD700, transparent);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .floating-meme {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 8s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        .social-button {
+            transition: all 0.3s ease;
+        }
+        .social-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col items-center justify-center p-12 relative">
+        <!-- Background elements -->
+        <div class="crypto-grid"></div>
+        <div class="glow-effect bg-yellow-500 opacity-10" style="top: -100px; right: -100px;"></div>
+        <div class="glow-effect bg-blue-500 opacity-10" style="bottom: -100px; left: -100px;"></div>
+        
+        <!-- Floating meme elements -->
+        <div class="floating-meme" style="top: 15%; right: 15%; animation-delay: 0s;">
+            <i class="fas fa-rocket text-yellow-400 text-8xl"></i>
+        </div>
+        <div class="floating-meme" style="bottom: 15%; left: 15%; animation-delay: 2s;">
+            <i class="fas fa-dog text-purple-400 text-8xl"></i>
+        </div>
+        
+        <!-- Main content -->
+        <div class="z-10 w-full max-w-4xl">
+            <!-- Title -->
+            <div class="mb-8 text-center">
+                <h1 class="title text-5xl font-bold text-white mb-4">Contact Information</h1>
+                <div class="w-36 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto"></div>
+                <p class="text-blue-200 mt-3">For more detailed consultation or questions, please feel free to contact us</p>
+            </div>
+            
+            <!-- Contact Card -->
+            <div class="contact-card bg-white bg-opacity-10 border border-blue-300 border-opacity-20 rounded-2xl p-8 shadow-xl mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Website -->
+                    <div class="contact-method flex flex-col items-center text-center p-4 rounded-xl">
+                        <div class="h-16 w-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mb-4">
+                            <i class="fas fa-globe text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-blue-300 mb-2">Website</h3>
+                        <a href="https://highcrypto.kr/" target="_blank" class="text-white hover:text-yellow-300 transition-colors duration-300">https://highcrypto.kr/</a>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="contact-method flex flex-col items-center text-center p-4 rounded-xl">
+                        <div class="h-16 w-16 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mb-4">
+                            <i class="fas fa-envelope text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-purple-300 mb-2">Email</h3>
+                        <a href="mailto:ceo@highcrypto.kr" class="text-white hover:text-yellow-300 transition-colors duration-300">ceo@highcrypto.kr</a>
+                    </div>
+                    
+                    <!-- Telegram -->
+                    <div class="contact-method flex flex-col items-center text-center p-4 rounded-xl">
+                        <div class="h-16 w-16 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mb-4">
+                            <i class="fab fa-telegram-plane text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-green-300 mb-2">Telegram</h3>
+                        <a href="https://t.me/highcrypto7" target="_blank" class="text-white hover:text-yellow-300 transition-colors duration-300">highcrypto7</a>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-white bg-opacity-5 p-4 rounded-xl border border-yellow-300 border-opacity-20">
+                    <div class="flex items-center">
+                        <i class="fas fa-info-circle text-yellow-300 text-xl mr-3"></i>
+                        <p class="text-white text-opacity-90">Q&amp;A can be conducted via Telegram or Zoom meetings, etc.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Thank you message -->
+            <div class="text-center mb-6">
+                <h2 class="thank-you text-4xl font-bold text-yellow-300 mb-8 inline-block">Thank you!</h2>
+                <p class="text-white text-xl mb-6">HighCrypto - The Best Partner for Global Projects Entering the Korean Market</p>
+            </div>
+            
+            <!-- Social Media Buttons -->
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="social-button h-12 w-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg">
+                    <i class="fab fa-twitter text-xl text-white"></i>
+                </a>
+                <a href="#" class="social-button h-12 w-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center shadow-lg">
+                    <i class="fab fa-instagram text-xl text-white"></i>
+                </a>
+                <a href="#" class="social-button h-12 w-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg">
+                    <i class="fab fa-linkedin-in text-xl text-white"></i>
+                </a>
+                <a href="#" class="social-button h-12 w-12 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg">
+                    <i class="fab fa-youtube text-xl text-white"></i>
+                </a>
+                <a href="#" class="social-button h-12 w-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg">
+                    <i class="fab fa-telegram-plane text-xl text-white"></i>
+                </a>
+            </div>
+            
+            <!-- Final slogan -->
+            <div class="text-center mt-4">
+                <div class="inline-block bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 text-black font-bold px-6 py-3 rounded-full transform transition-transform duration-300 hover:scale-105">
+                    <div class="flex items-center">
+                        <i class="fas fa-rocket mr-2"></i>
+                        <span>Let's Take Your Memecoin To The Moon!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://www.genspark.ai/slide-inner.js?_v=1"></script>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDiMHcuHhVQIGBbSDggOGG%2FUlA57jLvTdJg%2Bbw667cB27n3dG6yQhmJ9LJo4mI3%2BeFdDOBlXbhDQN2%2BgQ6Uo0CQefaR2nSsol%2FF0iwJM%2BbX6dufkvmx6YoOxpHAoV%2BZayagSreWO74s%2FvP9QJbWaZ2jcOSdCvfyMeflb7Ixu%2BVmoO3PbZgLSXmjIhGomy2xlrur23R8NdQU1yF8UPfyJRinqmlqIgJBrXmp31SEmJYcvnmxepCW4WePcDu%2FHv%2FzasMRB5jgH60neRG1Kf9QnEy2PzyQPWPQNyMXOpbs5ZmVgg2i1YnsCI2Di5ZZHCR%2FKX6w%2BbcPpQFqoejFph0159ahFMJUVtxfvhzGBW7AUfZbpex6fQWVTjXWiBh8nvcjhzyvYI%2FKXh%2BdphpSG0d8%2B%2FLEgQtIhVprfwkJXvDFsgiZ7g8PmbZ76owLOjwjKqDOv%2FB%2F7IdwEh1RzRdqsEl0RuMlLUTsAX55ZzFQ6SoOZ2uNtlUk1xGJ6y2JbfWv6Sq%2FrN5PEJpRs9KNFnz4tIrq%2FwgpBh%2FwsdppUSyvPtXE97Z1EbIq3Tdyb8L7Mrc2YjWjErW%2Fizg8ip9fP%2FgW1Dv3%2FvkP5v3gXgNdQ%2FYbZucIwxtpzCvu20se7vQWBrG6VfbJawV3gZXADW7%2Fcp5HjYl%2FQCilPFd2XZAZt%2FwdvlTl8m1JtuaYEVmWoszrT2hgCWX69Hnebh6wkJKomXK%2FOdX5SUFfCDsa2mgx4BHkzhnWL3n1Tk";
+        window.__genspark_locale = "ko-KR";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDiMHcuHhVQIGBbSDggOGG/UlA57jLvTdJg+bw667cB27n3dG6yQhmJ9LJo4mI3+eFdDOBlXbhDQN2+gQ6Uo0CQefaR2nSsol/F0iwJM+bX6dufkvmx6YoOxpHAoV+ZayagSreWO74s/vP9QJbWaZ2jcOSdCvfyMeflb7Ixu+VmoO3PbZgLSXmjIhGomy2xlrur23R8NdQU1yF8UPfyJRinqmlqIgJBrXmp31SEmJYcvnmxepCW4WePcDu/Hv/zasMRB5jgH60neRG1Kf9QnEy2PzyQPWPQNyMXOpbs5ZmVgg2i1YnsCI2Di5ZZHCR/KX6w+bcPpQFqoejFph0159ahFMJUVtxfvhzGBW7AUfZbpex6fQWVTjXWiBh8nvcjhzyvYI/KXh+dphpSG0d8+/LEgQtIhVprfwkJXvDFsgiZ7g8PmbZ76owLOjwjKqDOv/B/7IdwEh1RzRdqsEl0RuMlLUTsAX55ZzFQ6SoOZ2uNtlUk1xGJ6y2JbfWv6Sq/rN5PEJpRs9KNFnz4tIrq/wgpBh/wsdppUSyvPtXE97Z1EbIq3Tdyb8L7Mrc2YjWjErW/izg8ip9fP/gW1Dv3/vkP5v3gXgNdQ/YbZucIwxtpzCvu20se7vQWBrG6VfbJawV3gZXADW7/cp5HjYl/QCilPFd2XZAZt/wdvlTl8m1JtuaYEVmWoszrT2hgCWX69Hnebh6wkJKomXK/OdX5SUFfCDsa2mgx4BHkzhnWL3n1Tk";
+    </script>
+<div class="fixed bottom-6 left-0 right-0 flex justify-center space-x-4 z-50">
+    <a href="index.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
+        <i class="fas fa-home"></i> Home
+    </a>
+    <!-- 이전 버튼은 slide8.html로 연결 -->
+    <a href="slide8.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
+        <i class="fas fa-chevron-left"></i> Prev
+    </a>
+    <!-- 마지막 슬라이드에서는 다음 버튼 비활성화 -->
+    <a href="slide3.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
+        Next <i class="fas fa-chevron-right"></i>
+    </a>
+</div>
+    </body></html>

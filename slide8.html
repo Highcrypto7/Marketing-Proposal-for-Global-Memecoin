@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expected Benefits and Conclusion</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 780px; /* Increased from 720px to provide more space */
+            position: relative;
+            background: linear-gradient(135deg, #1a1c3b 0%, #2a3074 100%);
+            overflow: hidden;
+        }
+        .crypto-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            z-index: 0;
+        }
+        .title {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .benefit-card {
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
+        .benefit-icon {
+            transition: all 0.3s ease;
+        }
+        .glow-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: 0;
+        }
+        .floating-meme {
+            position: absolute;
+            font-size: 80px;
+            opacity: 0.07;
+            animation: float 6s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+        }
+        .conclusion-box {
+            position: relative;
+            overflow: hidden;
+        }
+        .conclusion-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 0, 0, 0.1) 100%);
+            z-index: -1;
+        }
+        .rocket-path {
+            position: absolute;
+            right: 10%;
+            bottom: 10%;
+            width: 150px;
+            height: 150px;
+            opacity: 0.15;
+        }
+        .rocket-path::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: radial-gradient(ellipse at bottom, rgba(255, 255, 0, 0.5) 0%, rgba(255, 255, 0, 0) 70%);
+            transform: rotate(-45deg) translateY(50%);
+        }
+        .bottom-decoration {
+            position: absolute;
+            bottom: 24px; /* Increased from 4px to create more space */
+            right: 6px;
+            z-index: 10;
+            background-color: rgba(26, 28, 59, 0.7); /* Added subtle background for better visibility */
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col items-start justify-start p-10 relative">
+        <!-- Background elements -->
+        <div class="crypto-grid"></div>
+        <div class="glow-effect bg-yellow-500 opacity-10" style="top: -100px; right: -100px;"></div>
+        <div class="glow-effect bg-blue-500 opacity-10" style="bottom: -100px; left: -100px;"></div>
+        
+        <!-- Floating meme elements -->
+        <div class="floating-meme text-yellow-400" style="top: 100px; right: 180px; animation-delay: 0s;">
+            <i class="fas fa-rocket"></i>
+        </div>
+        <div class="floating-meme text-purple-400" style="bottom: 150px; left: 100px; animation-delay: 2s;">
+            <i class="fas fa-dog"></i>
+        </div>
+        
+        <!-- Main content -->
+        <div class="z-10 w-full">
+            <!-- Title -->
+            <div class="mb-8">
+                <h1 class="title text-5xl font-bold text-white mb-4">Expected Benefits and Conclusion</h1>
+                <div class="w-36 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300"></div>
+                <p class="text-blue-200 mt-3">Through HighCrypto's services, your memecoin project can expect the following benefits:</p>
+            </div>
+            
+            <!-- Benefits Grid -->
+            <div class="grid grid-cols-3 gap-5 mb-10">
+                <!-- Benefit 1 -->
+                <div class="benefit-card bg-white bg-opacity-5 border border-blue-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                    <div class="benefit-icon h-14 w-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mb-4">
+                        <i class="fas fa-exchange-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-blue-300 mb-2">Korean Exchange Listing</h3>
+                    <p class="text-white text-opacity-80">Increased chance of Korean exchange listing through activated Korean community presence</p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="benefit-card bg-white bg-opacity-5 border border-green-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                    <div class="benefit-icon h-14 w-14 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mb-4">
+                        <i class="fas fa-coins text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-green-300 mb-2">Korean Investor Liquidity</h3>
+                    <p class="text-white text-opacity-80">Secure liquidity from Korean traders on CEX/DEX, farmers, NFT traders, miners, and all crypto investors</p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="benefit-card bg-white bg-opacity-5 border border-purple-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                    <div class="benefit-icon h-14 w-14 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-purple-300 mb-2">Enhanced Credibility</h3>
+                    <p class="text-white text-opacity-80">Build trust through official channels and content in Korean that resonates with local investors</p>
+                </div>
+                
+                <!-- Benefit 4 -->
+                <div class="benefit-card bg-white bg-opacity-5 border border-red-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                    <div class="benefit-icon h-14 w-14 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg mb-4">
+                        <i class="fas fa-globe-asia text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-red-300 mb-2">Global Recognition</h3>
+                    <p class="text-white text-opacity-80">Success in the Korean market enhances your standing in the global crypto ecosystem</p>
+                </div>
+                
+                <!-- Benefit 5 -->
+                <div class="benefit-card bg-white bg-opacity-5 border border-yellow-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                    <div class="benefit-icon h-14 w-14 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg mb-4">
+                        <i class="fas fa-seedling text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-yellow-300 mb-2">Future Potential</h3>
+                    <p class="text-white text-opacity-80">Establish a foundation for potential business expansion in Korea at any time</p>
+                </div>
+                
+                <!-- Benefit 6 -->
+                <div class="benefit-card bg-white bg-opacity-5 border border-pink-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                    <div class="benefit-icon h-14 w-14 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center shadow-lg mb-4">
+                        <i class="fas fa-chart-line text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-pink-300 mb-2">Presale Growth</h3>
+                    <p class="text-white text-opacity-80">Successful presale execution targeting Korean coin investors for maximum fundraising</p>
+                </div>
+            </div>
+            
+            <!-- Conclusion -->
+            <div class="conclusion-box bg-white bg-opacity-5 border border-yellow-300 border-opacity-30 rounded-xl p-6 shadow-xl">
+                <div class="flex items-center mb-4">
+                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg mr-4">
+                        <i class="fas fa-flag-checkered text-xl text-white"></i>
+                    </div>
+                    <h2 class="text-2xl font-semibold text-yellow-300">Conclusion</h2>
+                </div>
+                
+                <p class="text-white text-opacity-90 mb-4">Our packages can be customized according to your situation and purpose. We're ready to discuss the optimal strategy for your memecoin's success in the Korean market.</p>
+                
+                <div class="flex items-center justify-center mt-6">
+                    <div class="text-center">
+                        <p class="text-3xl font-bold text-yellow-300 italic mb-1">"Reach higher with HighCrypto"</p>
+                        <p class="text-white text-opacity-80">With HighCrypto, your memecoin project will definitely rise to greater heights!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Rocket path decoration -->
+        <div class="rocket-path"></div>
+        
+        <!-- Bottom decoration - Repositioned and enhanced for visibility -->
+        <div class="bottom-decoration flex items-center opacity-90">
+            <i class="fas fa-arrow-circle-up text-yellow-300 text-xl mr-2"></i>
+            <span class="text-yellow-300 font-semibold">To The Moon!</span>
+        </div>
+    </div>
+<div class="fixed bottom-6 left-0 right-0 flex justify-center space-x-4 z-50">
+    <a href="index.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
+        <i class="fas fa-home"></i> Home
+    </a>
+    <!-- 이전 버튼은 slide7.html로 연결 -->
+    <a href="slide1.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
+        <i class="fas fa-chevron-left"></i> Prev
+    </a>
+    <!-- 다음 버튼은 slide9.html로 연결 -->
+    <a href="slide3.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
+        Next <i class="fas fa-chevron-right"></i>
+    </a>
+</div>
+</body>
+</html>

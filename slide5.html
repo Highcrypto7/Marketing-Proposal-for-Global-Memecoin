@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Exchange Listing Requirements</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11.6.0/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #1a1c3b 0%, #2a3074 100%);
+            overflow: hidden;
+        }
+        .crypto-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            z-index: 0;
+        }
+        .title {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .info-card {
+            backdrop-filter: blur(8px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        .check-item {
+            transition: transform 0.2s ease;
+        }
+        .check-item:hover {
+            transform: translateX(5px);
+        }
+        .mermaid {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .glow-effect {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col items-start justify-start p-12 relative">
+        <!-- Background elements -->
+        <div class="crypto-grid"></div>
+        <div class="glow-effect bg-purple-500 opacity-10" style="top: -100px; right: -100px;"></div>
+        <div class="glow-effect bg-blue-500 opacity-10" style="bottom: -100px; left: -100px;"></div>
+        
+        <!-- Main content -->
+        <div class="z-10 w-full">
+            <!-- Title -->
+            <div class="mb-8">
+                <h1 class="title text-5xl font-bold text-white mb-4">Korean Exchange Listing Requirements</h1>
+                <div class="w-40 h-1 bg-gradient-to-r from-purple-400 to-blue-400"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-6">
+                <!-- Left column - Listing Criteria & Community Activity -->
+                <div class="space-y-6">
+                    <!-- Listing Criteria -->
+                    <div class="info-card bg-white bg-opacity-5 border border-purple-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mr-3">
+                                <i class="fas fa-clipboard-check text-lg text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-purple-300">Memecoin Listing Criteria</h2>
+                        </div>
+                        
+                        <p class="text-white text-opacity-80 mb-4">Memecoins must meet one of these two conditions:</p>
+                        
+                        <div class="relative mb-4">
+                            <div class="mermaid" id="listingDiagram">
+                                flowchart LR
+                                    A[Memecoin Project] --> B{Must Meet ONE}
+                                    B -->|Option 1| C[High Community Activity]
+                                    B -->|Option 2| D[Trading History on Qualified Overseas Exchanges]
+                                    style A fill:#503a9d,color:#fff
+                                    style B fill:#5e42d6,color:#fff
+                                    style C fill:#7958ff,color:#fff
+                                    style D fill:#7958ff,color:#fff
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-900 bg-opacity-20 p-3 rounded-lg border border-purple-500 border-opacity-30">
+                            <div class="flex items-center">
+                                <i class="fas fa-info-circle text-yellow-300 text-xl mr-3"></i>
+                                <p class="text-white text-opacity-90 text-sm">New regulations introduced May 1, 2025 to prevent indiscriminate listing of meme coins</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Community Activity -->
+                    <div class="info-card bg-white bg-opacity-5 border border-blue-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mr-3">
+                                <i class="fas fa-users text-lg text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-blue-300">Community Activity Importance</h2>
+                        </div>
+                        
+                        <p class="text-white text-opacity-80 mb-4">Key Korean communities with high influence:</p>
+                        
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <div class="bg-blue-900 bg-opacity-20 p-3 rounded-lg border border-blue-500 border-opacity-30">
+                                <h3 class="text-blue-300 font-semibold mb-1">DCinside</h3>
+                                <p class="text-white text-opacity-80 text-sm">3M+ daily visitors</p>
+                                <p class="text-white text-opacity-80 text-sm">227.3M monthly visits</p>
+                            </div>
+                            <div class="bg-blue-900 bg-opacity-20 p-3 rounded-lg border border-blue-500 border-opacity-30">
+                                <h3 class="text-blue-300 font-semibold mb-1">Coinpan</h3>
+                                <p class="text-white text-opacity-80 text-sm">5.2M monthly visitors</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-white text-opacity-80 text-sm">Viral marketing in these communities helps with both listing reviews and investor attraction</p>
+                    </div>
+                </div>
+                
+                <!-- Right column - Naver Blog & Social Media -->
+                <div class="space-y-6">
+                    <!-- Naver Blog -->
+                    <div class="info-card bg-white bg-opacity-5 border border-green-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mr-3">
+                                <i class="fas fa-blog text-lg text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-green-300">Influence of Naver Blog</h2>
+                        </div>
+                        
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="text-center bg-green-900 bg-opacity-20 p-4 rounded-lg border border-green-500 border-opacity-30 w-full">
+                                <div class="text-4xl font-bold text-yellow-300 mb-1">1.635B</div>
+                                <p class="text-white text-opacity-80 text-sm">Monthly visitors on Naver.com</p>
+                                <p class="text-white text-opacity-80 mt-2">Korea's largest portal site</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-2 mb-3">
+                            <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                            <p class="text-white text-opacity-90">Official Naver blog is <span class="text-yellow-300 font-semibold">essential</span> for exchange listing reviews</p>
+                        </div>
+                        
+                        <div class="flex items-start space-x-2">
+                            <i class="fas fa-check-circle text-green-400 mt-1"></i>
+                            <p class="text-white text-opacity-90">TRON used HighCrypto's Naver blog management service</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Communication -->
+                    <div class="info-card bg-white bg-opacity-5 border border-red-300 border-opacity-20 rounded-xl p-5 shadow-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg mr-3">
+                                <i class="fas fa-comments text-lg text-white"></i>
+                            </div>
+                            <h2 class="text-2xl font-semibold text-red-300">Korean Social Media Communication</h2>
+                        </div>
+                        
+                        <p class="text-white text-opacity-80 mb-3">Critical channels for investor communication:</p>
+                        
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="check-item flex items-center">
+                                <i class="fab fa-twitter text-blue-400 text-xl mr-2"></i>
+                                <p class="text-white text-opacity-90">Korean X (Twitter)</p>
+                            </div>
+                            <div class="check-item flex items-center">
+                                <i class="fab fa-telegram text-blue-500 text-xl mr-2"></i>
+                                <p class="text-white text-opacity-90">Korean Telegram</p>
+                            </div>
+                            <div class="check-item flex items-center">
+                                <i class="fab fa-youtube text-red-500 text-xl mr-2"></i>
+                                <p class="text-white text-opacity-90">Korean YouTube</p>
+                            </div>
+                            <div class="check-item flex items-center">
+                                <i class="fab fa-discord text-indigo-400 text-xl mr-2"></i>
+                                <p class="text-white text-opacity-90">Korean Discord</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 bg-red-900 bg-opacity-20 p-3 rounded-lg border border-red-500 border-opacity-30">
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-300 text-xl mr-3"></i>
+                                <p class="text-white text-opacity-90 text-sm">Investors who trust your Korean channels invest larger amounts in your project</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative memecoin element -->
+        <div class="absolute bottom-4 right-6 opacity-70 flex items-center text-yellow-300 font-semibold">
+            <i class="fas fa-paw mr-2 text-xl"></i>
+            <span>Memecoins need Korean presence!</span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            mermaid.initialize({
+                startOnLoad: true,
+                theme: 'dark',
+                securityLevel: 'loose',
+                themeVariables: {
+                    primaryColor: '#503a9d',
+                    primaryTextColor: '#fff',
+                    primaryBorderColor: '#7958ff',
+                    lineColor: '#7958ff',
+                    secondaryColor: '#5e42d6',
+                    tertiaryColor: '#252545'
+                }
+            });
+        });
+    </script>
+<div class="fixed bottom-6 left-0 right-0 flex justify-center space-x-4 z-50">
+    <a href="index.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
+        <i class="fas fa-home"></i> Home
+    </a>
+    <!-- 이전 버튼은 slide4.html로 연결 -->
+    <a href="slide1.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
+        <i class="fas fa-chevron-left"></i> Prev
+    </a>
+    <!-- 다음 버튼은 slide6.html로 연결 -->
+    <a href="slide3.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
+        Next <i class="fas fa-chevron-right"></i>
+    </a>
+</div>
+</body>
+</html>
