@@ -12,84 +12,140 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a1c3b 0%, #2a3074 100%);
-            min-height: 100vh;
+            background: #0f172a;
             color: white;
         }
         .container {
-            max-width: 800px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 2rem;
         }
-        .slide-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 1rem;
-            margin-bottom: 1rem;
+        .slide-container {
+            margin-bottom: 50px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        .slide-card:hover {
-            transform: translateY(-5px);
+            border-radius: 10px;
+            overflow: hidden;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.15);
+        }
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 20px;
+            z-index: 10;
+        }
+        iframe {
+            width: 100%;
+            height: 720px;
+            border: none;
+            display: block;
+        }
+        .header {
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
         }
         .title {
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 30px;
+            z-index: 1000;
+        }
+        .nav-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-button:hover {
+            background: rgba(255, 215, 0, 0.5);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="text-center mb-10">
-            <h1 class="title text-4xl font-bold mb-4">Korean Marketing Proposal for Global Memecoin Projects</h1>
-            <p class="text-xl text-yellow-300">"Reach Higher with HighCrypto"</p>
-            <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto mt-4"></div>
+    <div class="header">
+        <h1 class="title text-4xl font-bold mb-4">Korean Marketing Proposal for Global Memecoin Projects</h1>
+        <p class="text-xl text-yellow-300">"Reach Higher with HighCrypto"</p>
+        <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto mt-4"></div>
+    </div>
+
+    <div class="container pb-20">
+        <!-- Slide 1 -->
+        <div class="slide-container relative" id="slide1">
+            <div class="slide-number">1</div>
+            <iframe src="slide1.html" title="Slide 1"></iframe>
         </div>
         
-        <h2 class="text-2xl font-semibold mb-6">Presentation Slides:</h2>
-        
-        <div class="grid grid-cols-1 gap-4">
-            <a href="slide1.html" class="slide-card flex items-center">
-                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mr-4">
-                    <span class="font-bold">1</span>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-blue-300">Cover Page</h3>
-                    <p class="text-sm text-white text-opacity-70">Introduction to HighCrypto</p>
-                </div>
-            </a>
-            
-            <a href="slide2.html" class="slide-card flex items-center">
-                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mr-4">
-                    <span class="font-bold">2</span>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-green-300">Table of Contents</h3>
-                    <p class="text-sm text-white text-opacity-70">Overview of presentation sections</p>
-                </div>
-            </a>
-            
-            <!-- 나머지 슬라이드에 대한 링크도 같은 형식으로 추가 -->
-            <a href="slide3.html" class="slide-card flex items-center">
-                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mr-4">
-                    <span class="font-bold">3</span>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-purple-300">Proposal Overview</h3>
-                    <p class="text-sm text-white text-opacity-70">Introduction to our services</p>
-                </div>
-            </a>
-            
-            <!-- 슬라이드 4-9에 대한 링크도 추가 -->
+        <!-- Slide 2 -->
+        <div class="slide-container relative" id="slide2">
+            <div class="slide-number">2</div>
+            <iframe src="slide2.html" title="Slide 2"></iframe>
         </div>
         
-        <div class="mt-10 text-center">
-            <p>To view as a slideshow with keyboard navigation:</p>
-            <a href="slideshow.html" class="inline-block mt-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold py-2 px-6 rounded-full">
-                Launch Slideshow Mode
-            </a>
+        <!-- Slide 3 -->
+        <div class="slide-container relative" id="slide3">
+            <div class="slide-number">3</div>
+            <iframe src="slide3.html" title="Slide 3"></iframe>
         </div>
+        
+        <!-- Slide 4 -->
+        <div class="slide-container relative" id="slide4">
+            <div class="slide-number">4</div>
+            <iframe src="slide4.html" title="Slide 4"></iframe>
+        </div>
+        
+        <!-- Slide 5 -->
+        <div class="slide-container relative" id="slide5">
+            <div class="slide-number">5</div>
+            <iframe src="slide5.html" title="Slide 5"></iframe>
+        </div>
+        
+        <!-- Slide 6 -->
+        <div class="slide-container relative" id="slide6">
+            <div class="slide-number">6</div>
+            <iframe src="slide6.html" title="Slide 6"></iframe>
+        </div>
+        
+        <!-- Slide 7 -->
+        <div class="slide-container relative" id="slide7">
+            <div class="slide-number">7</div>
+            <iframe src="slide7.html" title="Slide 7"></iframe>
+        </div>
+        
+        <!-- Slide 8 -->
+        <div class="slide-container relative" id="slide8">
+            <div class="slide-number">8</div>
+            <iframe src="slide8.html" title="Slide 8"></iframe>
+        </div>
+        
+        <!-- Slide 9 -->
+        <div class="slide-container relative" id="slide9">
+            <div class="slide-number">9</div>
+            <iframe src="slide9.html" title="Slide 9"></iframe>
+        </div>
+    </div>
+    
+    <!-- Navigation -->
+    <div class="navigation">
+        <a href="#slide1" class="nav-button" title="First Slide"><i class="fas fa-arrow-up"></i></a>
+        <a href="#" class="nav-button" title="Slideshow Mode" onclick="window.location='slideshow.html'"><i class="fas fa-play"></i></a>
+        <a href="#slide9" class="nav-button" title="Last Slide"><i class="fas fa-arrow-down"></i></a>
     </div>
 </body>
 </html>
