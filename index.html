@@ -26,6 +26,9 @@
             overflow: hidden;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
             position: relative;
+            /* 슬라이드를 iframe 내용에 맞게 정확히 설정 */
+            line-height: 0;
+            font-size: 0;
         }
         .slide-number {
             position: absolute;
@@ -37,16 +40,22 @@
             padding: 5px 12px;
             border-radius: 20px;
             z-index: 10;
+            line-height: normal;
+            font-size: 16px;
         }
         iframe {
             width: 100%;
             border: none;
             display: block;
+            margin: 0;
+            padding: 0;
         }
         .header {
             padding: 20px;
             text-align: center;
             margin-bottom: 30px;
+            line-height: normal;
+            font-size: 16px;
         }
         .title {
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -62,6 +71,8 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            line-height: normal;
+            font-size: 16px;
         }
         .nav-button {
             width: 40px;
@@ -86,18 +97,17 @@
             background: rgba(255, 215, 0, 0.1);
             border-radius: 8px;
             font-style: italic;
+            line-height: normal;
+            font-size: 16px;
         }
         /* iframe 내부의 버튼을 숨기는 스타일 */
-        iframe {
-            position: relative;
-        }
         .iframe-overlay {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 80px; /* 내비게이션 버튼이 있는 영역 커버 */
-            background-color: #0f172a; /* 배경색과 동일하게 설정 */
+            height: 0; /* 높이를 0으로 설정하여 오버레이 공간 제거 */
+            background-color: transparent; /* 투명 배경 */
             z-index: 5;
         }
     </style>
@@ -114,59 +124,50 @@
             아래로 스크롤하며 모든 슬라이드를 확인하세요.
         </div>
         
-        <!-- 각 슬라이드 높이 유지, 8번 슬라이드만 높이 증가 -->
+        <!-- 각 슬라이드의 iframe - 오버레이 제거 및 정확한 높이 설정 -->
         <div class="slide-container" id="slide1">
             <div class="slide-number">1</div>
-            <iframe src="slide1.html" title="Slide 1" height="850px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="iframe-overlay"></div>
+            <iframe src="slide1.html" title="Slide 1" height="720px" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         
         <div class="slide-container" id="slide2">
             <div class="slide-number">2</div>
-            <iframe src="slide2.html" title="Slide 2" height="950px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="iframe-overlay"></div>
+            <iframe src="slide2.html" title="Slide 2" height="836px" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         
         <div class="slide-container" id="slide3">
             <div class="slide-number">3</div>
-            <iframe src="slide3.html" title="Slide 3" height="1000px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="iframe-overlay"></div>
+            <iframe src="slide3.html" title="Slide 3" height="863px" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         
         <div class="slide-container" id="slide4">
             <div class="slide-number">4</div>
-            <iframe src="slide4.html" title="Slide 4" height="1050px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="iframe-overlay"></div>
+            <iframe src="slide4.html" title="Slide 4" height="882px" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         
         <div class="slide-container" id="slide5">
             <div class="slide-number">5</div>
-            <iframe src="slide5.html" title="Slide 5" height="1050px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="iframe-overlay"></div>
+            <iframe src="slide5.html" title="Slide 5" height="891px" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         
         <div class="slide-container" id="slide6">
             <div class="slide-number">6</div>
-            <iframe src="slide6.html" title="Slide 6" height="850px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="iframe-overlay"></div>
+            <iframe src="slide6.html" title="Slide 6" height="720px" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         
         <div class="slide-container" id="slide7">
             <div class="slide-number">7</div>
-            <iframe src="slide7.html" title="Slide 7" height="980px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="iframe-overlay"></div>
+            <iframe src="slide7.html" title="Slide 7" height="780px" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
         
         <div class="slide-container" id="slide8">
             <div class="slide-number">8</div>
             <iframe src="slide8.html" title="Slide 8" height="1200px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="iframe-overlay"></div>
         </div>
         
         <div class="slide-container" id="slide9">
             <div class="slide-number">9</div>
-            <iframe src="slide9.html" title="Slide 9" height="1000px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="iframe-overlay"></div>
+            <iframe src="slide9.html" title="Slide 9" height="849px" sandbox="allow-scripts allow-same-origin"></iframe>
         </div>
     </div>
     
