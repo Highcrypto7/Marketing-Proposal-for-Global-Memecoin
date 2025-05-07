@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korean Marketing Proposal for Global Memecoin Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        .slide {
+            width: 1280px;
+            min-height: 720px;
+            position: relative;
+            background: linear-gradient(135deg, #1a1c3b 0%, #2a3074 100%);
+            overflow: hidden;
+        }
+        .crypto-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            z-index: 0;
+        }
+        .memecoin-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 182, 25, 0.2);
+            filter: blur(80px);
+            z-index: 0;
+        }
+        .title {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .tagline {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .coin {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: float 6s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide flex flex-col items-center justify-center relative">
+        <!-- Background elements -->
+        <div class="crypto-grid"></div>
+        <div class="memecoin-circle" style="width: 500px; height: 500px; top: -100px; right: -100px;"></div>
+        <!-- 문제가 되는 원의 위치를 아래로 이동 -->
+        <div class="memecoin-circle" style="width: 400px; height: 400px; top: 350px; left: -100px; background: rgba(94, 114, 228, 0.2);"></div>
+        
+        <!-- Floating coins - 위치 조정 -->
+        <div class="coin bg-yellow-400 text-gray-800" style="width: 100px; height: 100px; top: 120px; right: 180px; animation-delay: 0s;">
+            <i class="fas fa-dog text-4xl"></i>
+        </div>
+        <div class="coin bg-blue-500 text-white" style="width: 80px; height: 80px; bottom: 150px; right: 280px; animation-delay: 1s;">
+            <i class="fas fa-rocket text-3xl"></i>
+        </div>
+        <!-- 문제가 되는 아이콘의 위치를 아래로 이동 -->
+        <div class="coin bg-purple-500 text-white" style="width: 70px; height: 70px; top: 400px; left: 200px; animation-delay: 2s;">
+            <i class="fas fa-frog text-2xl"></i>
+        </div>
+        
+        <!-- Main content -->
+        <div class="z-10 text-center px-16">
+            <h1 class="title text-6xl font-extrabold text-white mb-6 tracking-tight">Korean Marketing Proposal for<br/>Global Memecoin Projects</h1>
+            <p class="tagline text-2xl font-semibold text-yellow-300 mb-8">"Reach Higher with HighCrypto"</p>
+            <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto mb-8"></div>
+            <p class="text-xl text-blue-200 font-medium">Korea's Premier Crypto Marketing Agency</p>
+        </div>
+        
+        <!-- Bottom decoration -->
+        <div class="absolute bottom-10 w-full flex justify-center">
+            <div class="flex space-x-12">
+                <div class="h-14 w-14 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center opacity-80">
+                    <i class="fas fa-chart-line text-2xl text-white"></i>
+                </div>
+                <div class="h-14 w-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center opacity-80">
+                    <i class="fas fa-globe-asia text-2xl text-white"></i>
+                </div>
+                <div class="h-14 w-14 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center opacity-80">
+                    <i class="fas fa-comments text-2xl text-white"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
