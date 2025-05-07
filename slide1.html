@@ -65,16 +65,18 @@
         <!-- Background elements -->
         <div class="crypto-grid"></div>
         <div class="memecoin-circle" style="width: 500px; height: 500px; top: -100px; right: -100px;"></div>
-        <div class="memecoin-circle" style="width: 400px; height: 400px; top: -150px; left: -100px; background: rgba(94, 114, 228, 0.2);"></div>
+        <!-- 문제가 되는 원의 위치를 아래로 이동 -->
+        <div class="memecoin-circle" style="width: 400px; height: 400px; top: 350px; left: -100px; background: rgba(94, 114, 228, 0.2);"></div>
         
-        <!-- Floating coins -->
+        <!-- Floating coins - 위치 조정 -->
         <div class="coin bg-yellow-400 text-gray-800" style="width: 100px; height: 100px; top: 120px; right: 180px; animation-delay: 0s;">
             <i class="fas fa-dog text-4xl"></i>
         </div>
         <div class="coin bg-blue-500 text-white" style="width: 80px; height: 80px; bottom: 150px; right: 280px; animation-delay: 1s;">
             <i class="fas fa-rocket text-3xl"></i>
         </div>
-        <div class="coin bg-purple-500 text-white" style="width: 70px; height: 70px; top: 240px; left: 200px; animation-delay: 2s;">
+        <!-- 문제가 되는 아이콘의 위치를 아래로 이동 -->
+        <div class="coin bg-purple-500 text-white" style="width: 70px; height: 70px; top: 400px; left: 200px; animation-delay: 2s;">
             <i class="fas fa-frog text-2xl"></i>
         </div>
         
@@ -101,18 +103,5 @@
             </div>
         </div>
     </div>
-<div class="fixed bottom-6 left-0 right-0 flex justify-center space-x-4 z-50">
-    <a href="index.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
-        <i class="fas fa-home"></i> Home
-    </a>
-<!-- 첫 번째 슬라이드에서는 이전 버튼 비활성화 -->
-    <a href="slide1.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
-        <i class="fas fa-chevron-left"></i> Prev
-    </a>
-    <!-- 다음 슬라이드 링크는 slide2.html -->
-    <a href="slide3.html" class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-full hover:bg-opacity-30 transition-all">
-        Next <i class="fas fa-chevron-right"></i>
-    </a>
-</div>
 </body>
 </html>
