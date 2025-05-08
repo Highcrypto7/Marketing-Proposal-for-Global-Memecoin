@@ -14,24 +14,27 @@
             font-family: 'Poppins', sans-serif;
             background: #0f172a;
             color: white;
+            /* 스크롤 허용 */
+            overflow-y: auto;
         }
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
+            /* 컨테이너가 페이지 끝까지 확장되도록 */
+            min-height: 100%;
         }
         .header {
             padding: 20px 0;
             text-align: center;
             margin-bottom: 30px;
-            padding-top: 80px; /* 네비게이션 바 때문에 패딩 추가 */
         }
         .title {
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         .slide-container {
             width: 100%;
-            margin-bottom: 50px;
+            margin-bottom: 50px; /* 슬라이드 사이 간격 증가 */
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
@@ -48,15 +51,14 @@
             border-radius: 20px;
             z-index: 10;
         }
+        /* 슬라이드 1:표지 같은 텍스트 제거 */
+        .slide-content > p.text-xl {
+            display: none !important;
+        }
+        /* 슬라이드 내용에 패딩 추가 */
         .slide-content {
-            width: 100%;
-            min-height: 720px;
+            padding: 20px;
             background: linear-gradient(135deg, #1a1c3b 0%, #2a3074 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            box-sizing: border-box;
         }
         .navigation {
             position: fixed;
@@ -86,51 +88,24 @@
         .nav-button:hover {
             background: rgba(255, 215, 0, 0.5);
         }
-        
-        /* 스크롤 허용 */
-        body, html {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-y: auto !important;
-        }
-        
-        /* 슬라이드 1:표지 같은 텍스트 제거 */
-        .slide-content > p.text-xl {
-            display: none !important;
-        }
-        
         /* 슬라이드 1:표지( / 슬라이드 오른쪽에 ) 텍스트 제거 */
         .slide-content::before,
         .slide-content::after {
             display: none !important;
         }
         
-        /* 상단 네비게이션 스타일 */
-        .top-navigation {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        .nav-item {
-            color: rgba(255, 255, 255, 0.7);
-            padding: 0.5rem 0.75rem;
-            font-size: 0.875rem;
-            border-radius: 0.375rem;
-            transition: all 0.2s;
-            white-space: nowrap;
-            text-decoration: none;
-        }
-        .nav-item:hover, .nav-item.active {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 1);
+        /* 스크롤 허용을 위한 추가 스타일 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto !important;
         }
         
-        /* 모바일 반응형 */
+        /* 모바일 반응형 스타일 */
         @media (max-width: 768px) {
-            .nav-container {
-                font-size: 0.75rem;
-            }
-            .nav-item {
-                padding: 0.25rem 0.5rem;
+            .container {
+                padding: 10px;
             }
             .title {
                 font-size: 1.5rem;
@@ -139,26 +114,6 @@
     </style>
 </head>
 <body>
-    <!-- Top navigation -->
-    <div class="top-navigation fixed top-0 left-0 right-0 bg-opacity-80 bg-gray-900 backdrop-blur-sm z-50 py-4">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <div class="text-xl font-bold text-yellow-300">HighCrypto</div>
-                <div class="nav-container flex space-x-2 overflow-x-auto py-1">
-                    <a href="#slide1" class="nav-item">Cover</a>
-                    <a href="#slide2" class="nav-item">Contents</a>
-                    <a href="#slide3" class="nav-item">Overview</a>
-                    <a href="#slide4" class="nav-item">Korean Market</a>
-                    <a href="#slide5" class="nav-item">Listing</a>
-                    <a href="#slide6" class="nav-item">Services</a>
-                    <a href="#slide7" class="nav-item">Packages</a>
-                    <a href="#slide8" class="nav-item">Benefits</a>
-                    <a href="#slide9" class="nav-item">Contact</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="header">
         <h1 class="title text-4xl font-bold mb-4">Korean Marketing Proposal for Global Memecoin Projects</h1>
         <p class="text-xl text-yellow-300">"Reach Higher with HighCrypto"</p>
@@ -166,7 +121,7 @@
     </div>
 
     <div class="container pb-20">
-        <!-- 각 슬라이드를 직접 포함 -->
+        <!-- 슬라이드 1 -->
         <div id="slide1" class="slide-container">
             <div class="slide-number">1</div>
             <div class="slide-content">
@@ -280,6 +235,7 @@
             </div>
         </div>
         
+        <!-- 슬라이드 2 -->
         <div id="slide2" class="slide-container">
             <div class="slide-number">2</div>
             <div class="slide-content">
@@ -489,6 +445,7 @@
             </div>
         </div>
         
+        <!-- 슬라이드 3 -->
         <div id="slide3" class="slide-container">
             <div class="slide-number">3</div>
             <div class="slide-content">
@@ -646,6 +603,7 @@
             </div>
         </div>
         
+        <!-- 슬라이드 4 -->
         <div id="slide4" class="slide-container">
             <div class="slide-number">4</div>
             <div class="slide-content">
@@ -983,6 +941,7 @@
             </div>
         </div>
         
+        <!-- 슬라이드 5 -->
         <div id="slide5" class="slide-container">
             <div class="slide-number">5</div>
             <div class="slide-content">
@@ -1232,6 +1191,7 @@
             </div>
         </div>
         
+        <!-- 슬라이드 6 -->
         <div id="slide6" class="slide-container">
             <div class="slide-number">6</div>
             <div class="slide-content">
@@ -1461,6 +1421,7 @@
             </div>
         </div>
         
+        <!-- 슬라이드 7 -->
         <div id="slide7" class="slide-container">
             <div class="slide-number">7</div>
             <div class="slide-content">
@@ -1811,6 +1772,7 @@
             </div>
         </div>
         
+        <!-- 슬라이드 8 -->
         <div id="slide8" class="slide-container">
             <div class="slide-number">8</div>
             <div class="slide-content">
@@ -2047,6 +2009,7 @@
             </div>
         </div>
         
+        <!-- 슬라이드 9 -->
         <div id="slide9" class="slide-container">
             <div class="slide-number">9</div>
             <div class="slide-content">
@@ -2258,12 +2221,32 @@
         </div>
     </div>
     
-    <!-- 페이지 탐색 내비게이션 - 위, 아래 버튼만 남김 -->
+    <!-- 네비게이션 버튼 -->
     <div class="navigation">
         <a href="#slide1" class="nav-button" title="처음 슬라이드로 이동"><i class="fas fa-arrow-up"></i></a>
         <a href="#slide9" class="nav-button" title="마지막 슬라이드로 이동"><i class="fas fa-arrow-down"></i></a>
     </div>
-    
+
+    <!-- Top navigation -->
+    <div class="navigation">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold text-yellow-300">HighCrypto</div>
+                <div class="nav-container flex space-x-2">
+                    <a href="#slide1" class="nav-item active">Cover</a>
+                    <a href="#slide2" class="nav-item">Contents</a>
+                    <a href="#slide3" class="nav-item">Overview</a>
+                    <a href="#slide4" class="nav-item">Korean Market</a>
+                    <a href="#slide5" class="nav-item">Listing</a>
+                    <a href="#slide6" class="nav-item">Services</a>
+                    <a href="#slide7" class="nav-item">Packages</a>
+                    <a href="#slide8" class="nav-item">Benefits</a>
+                    <a href="#slide9" class="nav-item">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div> 
+
     <!-- 스크롤 문제 해결을 위한 스크립트 -->
     <script>
         // 페이지 로드 시 스크롤 활성화
@@ -2275,29 +2258,6 @@
             const pElements = document.querySelectorAll('.slide-content p.text-xl');
             pElements.forEach(function(el) {
                 el.style.display = 'none';
-            });
-        });
-        
-        // 스크롤 위치에 따라 네비게이션 메뉴 활성화
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('.slide-container');
-            const navItems = document.querySelectorAll('.nav-item');
-            
-            let current = '';
-            
-            sections.forEach(function(section) {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(function(item) {
-                item.classList.remove('active');
-                if (item.getAttribute('href').slice(1) === current) {
-                    item.classList.add('active');
-                }
             });
         });
     </script>
