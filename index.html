@@ -18,48 +18,29 @@
         .container {
             max-width: 1280px;
             margin: 0 auto;
-        }
-        .slide-container {
-            margin-bottom: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-            position: relative;
-            line-height: 0;
-            font-size: 0;
-        }
-        .slide-number {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            font-weight: bold;
-            padding: 5px 12px;
-            border-radius: 20px;
-            z-index: 10;
-            line-height: normal;
-            font-size: 16px;
-        }
-        iframe {
-            width: 100%;
-            border: none;
-            display: block;
-            margin: 0;
-            padding: 0;
+            padding: 0 20px;
         }
         .header {
-            padding: 20px;
+            padding: 20px 0;
             text-align: center;
             margin-bottom: 30px;
-            line-height: normal;
-            font-size: 16px;
         }
         .title {
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
-        .page-navigation {
+        .slide-embed {
+            width: 100%;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .navigation {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -70,8 +51,6 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            line-height: normal;
-            font-size: 16px;
         }
         .nav-button {
             width: 40px;
@@ -79,34 +58,15 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             color: white;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
         .nav-button:hover {
             background: rgba(255, 215, 0, 0.5);
-        }
-        .guide-message {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 8px;
-            font-style: italic;
-            line-height: normal;
-            font-size: 16px;
-        }
-        /* 하단 내비게이션 버튼을 숨기는 스타일 */
-        .btn-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 60px; /* 내비게이션 버튼 영역 높이 */
-            background-color: #0f172a; /* 배경색과 동일 */
-            z-index: 11; /* iframe보다 위에 표시 */
         }
     </style>
 </head>
@@ -117,69 +77,56 @@
         <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto mt-4"></div>
     </div>
 
-    <div class="container pb-20">
-        <div class="guide-message">
-            아래로 스크롤하며 모든 슬라이드를 확인하세요.
+    <div class="container">
+        <!-- 각 슬라이드는 이미지로 임베드 -->
+        <div id="slide1" class="slide-embed">
+            <img src="https://via.placeholder.com/1280x720/1a1c3b/ffffff?text=Slide+1:+Loading..." alt="Slide 1" onload="this.style.display='none'; document.getElementById('frame1').style.display='block';">
+            <iframe id="frame1" src="slide1.html" width="1280" height="720" frameborder="0" style="display:none;"></iframe>
         </div>
         
-        <!-- 각 슬라이드에 버튼 가리는 오버레이 추가 -->
-        <div class="slide-container" id="slide1">
-            <div class="slide-number">1</div>
-            <iframe src="slide1.html" title="Slide 1" height="720px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="btn-overlay"></div>
+        <div id="slide2" class="slide-embed">
+            <img src="https://via.placeholder.com/1280x836/1a1c3b/ffffff?text=Slide+2:+Loading..." alt="Slide 2" onload="this.style.display='none'; document.getElementById('frame2').style.display='block';">
+            <iframe id="frame2" src="slide2.html" width="1280" height="836" frameborder="0" style="display:none;"></iframe>
         </div>
         
-        <div class="slide-container" id="slide2">
-            <div class="slide-number">2</div>
-            <iframe src="slide2.html" title="Slide 2" height="836px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="btn-overlay"></div>
+        <div id="slide3" class="slide-embed">
+            <img src="https://via.placeholder.com/1280x863/1a1c3b/ffffff?text=Slide+3:+Loading..." alt="Slide 3" onload="this.style.display='none'; document.getElementById('frame3').style.display='block';">
+            <iframe id="frame3" src="slide3.html" width="1280" height="863" frameborder="0" style="display:none;"></iframe>
         </div>
         
-        <div class="slide-container" id="slide3">
-            <div class="slide-number">3</div>
-            <iframe src="slide3.html" title="Slide 3" height="863px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="btn-overlay"></div>
+        <div id="slide4" class="slide-embed">
+            <img src="https://via.placeholder.com/1280x882/1a1c3b/ffffff?text=Slide+4:+Loading..." alt="Slide 4" onload="this.style.display='none'; document.getElementById('frame4').style.display='block';">
+            <iframe id="frame4" src="slide4.html" width="1280" height="882" frameborder="0" style="display:none;"></iframe>
         </div>
         
-        <div class="slide-container" id="slide4">
-            <div class="slide-number">4</div>
-            <iframe src="slide4.html" title="Slide 4" height="882px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="btn-overlay"></div>
+        <div id="slide5" class="slide-embed">
+            <img src="https://via.placeholder.com/1280x891/1a1c3b/ffffff?text=Slide+5:+Loading..." alt="Slide 5" onload="this.style.display='none'; document.getElementById('frame5').style.display='block';">
+            <iframe id="frame5" src="slide5.html" width="1280" height="891" frameborder="0" style="display:none;"></iframe>
         </div>
         
-        <div class="slide-container" id="slide5">
-            <div class="slide-number">5</div>
-            <iframe src="slide5.html" title="Slide 5" height="891px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="btn-overlay"></div>
+        <div id="slide6" class="slide-embed">
+            <img src="https://via.placeholder.com/1280x720/1a1c3b/ffffff?text=Slide+6:+Loading..." alt="Slide 6" onload="this.style.display='none'; document.getElementById('frame6').style.display='block';">
+            <iframe id="frame6" src="slide6.html" width="1280" height="720" frameborder="0" style="display:none;"></iframe>
         </div>
         
-        <div class="slide-container" id="slide6">
-            <div class="slide-number">6</div>
-            <iframe src="slide6.html" title="Slide 6" height="720px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="btn-overlay"></div>
+        <div id="slide7" class="slide-embed">
+            <img src="https://via.placeholder.com/1280x780/1a1c3b/ffffff?text=Slide+7:+Loading..." alt="Slide 7" onload="this.style.display='none'; document.getElementById('frame7').style.display='block';">
+            <iframe id="frame7" src="slide7.html" width="1280" height="780" frameborder="0" style="display:none;"></iframe>
         </div>
         
-        <div class="slide-container" id="slide7">
-            <div class="slide-number">7</div>
-            <iframe src="slide7.html" title="Slide 7" height="780px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="btn-overlay"></div>
+        <div id="slide8" class="slide-embed">
+            <img src="https://via.placeholder.com/1280x1200/1a1c3b/ffffff?text=Slide+8:+Loading..." alt="Slide 8" onload="this.style.display='none'; document.getElementById('frame8').style.display='block';">
+            <iframe id="frame8" src="slide8.html" width="1280" height="1200" frameborder="0" style="display:none;"></iframe>
         </div>
         
-        <div class="slide-container" id="slide8">
-            <div class="slide-number">8</div>
-            <iframe src="slide8.html" title="Slide 8" height="1200px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="btn-overlay"></div>
-        </div>
-        
-        <div class="slide-container" id="slide9">
-            <div class="slide-number">9</div>
-            <iframe src="slide9.html" title="Slide 9" height="849px" sandbox="allow-scripts allow-same-origin"></iframe>
-            <div class="btn-overlay"></div>
+        <div id="slide9" class="slide-embed">
+            <img src="https://via.placeholder.com/1280x849/1a1c3b/ffffff?text=Slide+9:+Loading..." alt="Slide 9" onload="this.style.display='none'; document.getElementById('frame9').style.display='block';">
+            <iframe id="frame9" src="slide9.html" width="1280" height="849" frameborder="0" style="display:none;"></iframe>
         </div>
     </div>
     
-    <!-- 페이지 탐색 내비게이션 -->
-    <div class="page-navigation">
+    <!-- 네비게이션 버튼 -->
+    <div class="navigation">
         <a href="#slide1" class="nav-button" title="처음 슬라이드로 이동"><i class="fas fa-arrow-up"></i></a>
         <a href="#slide9" class="nav-button" title="마지막 슬라이드로 이동"><i class="fas fa-arrow-down"></i></a>
     </div>
