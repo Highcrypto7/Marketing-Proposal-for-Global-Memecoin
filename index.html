@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마케팅 제안서</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <style>
         body {
             margin: 0;
@@ -11,6 +12,62 @@
             background: #1a1c3b;
             font-family: 'Arial', sans-serif;
         }
+        /* 네비게이션 바 스타일 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(26, 28, 59, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            z-index: 1000;
+        }
+        .navbar-brand {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand i {
+            margin-right: 10px;
+        }
+        .navbar-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar-menu li {
+            margin-left: 20px;
+        }
+        .navbar-menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .navbar-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFD700;
+        }
+        .navbar-menu a.active {
+            border-bottom: 2px solid #FFD700;
+        }
+
+        /* 컨텐츠 영역 - 네비바 공간 확보 */
+        .content {
+            padding-top: 80px;
+        }
+
         .slide-container {
             width: 100%;
             max-width: 1280px;
@@ -68,65 +125,84 @@
     </style>
 </head>
 <body>
-    <!-- 슬라이드 1 -->
-    <div id="slide1" class="slide-container">
-        <iframe id="slide1-frame" src="slide1.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-    </div>
-    
-    <div class="slide-divider"></div>
-    
-    <!-- 슬라이드 2 -->
-    <div id="slide2" class="slide-container">
-        <iframe id="slide2-frame" src="slide2.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-    </div>
-    
-    <div class="slide-divider"></div>
-    
-    <!-- 슬라이드 3 -->
-    <div id="slide3" class="slide-container">
-        <iframe id="slide3-frame" src="slide3.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-    </div>
-    
-    <div class="slide-divider"></div>
-    
-    <!-- 슬라이드 4 -->
-    <div id="slide4" class="slide-container">
-        <iframe id="slide4-frame" src="slide4.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-    </div>
-    
-    <div class="slide-divider"></div>
-    
-    <!-- 슬라이드 5 -->
-    <div id="slide5" class="slide-container">
-        <iframe id="slide5-frame" src="slide5.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-    </div>
-    
-    <div class="slide-divider"></div>
-    
-    <!-- 슬라이드 6 -->
-    <div id="slide6" class="slide-container">
-        <iframe id="slide6-frame" src="slide6.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-    </div>
-    
-    <div class="slide-divider"></div>
-    
-    <!-- 슬라이드 7 -->
-    <div id="slide7" class="slide-container">
-        <iframe id="slide7-frame" src="slide7.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-    </div>
-    
-    <div class="slide-divider"></div>
-    
-    <!-- 슬라이드 8 -->
-    <div id="slide8" class="slide-container">
-        <iframe id="slide8-frame" src="slide8.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-    </div>
-    
-    <div class="slide-divider"></div>
-    
-    <!-- 슬라이드 9 -->
-    <div id="slide9" class="slide-container">
-        <iframe id="slide9-frame" src="slide9.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">
+            <i class="fas fa-rocket"></i>HighCrypto
+        </a>
+        <ul class="navbar-menu">
+            <li><a href="#slide1" class="active">Home</a></li>
+            <li><a href="#slide3">Overview</a></li>
+            <li><a href="#slide4">Korean Market</a></li>
+            <li><a href="#slide5">Listing</a></li>
+            <li><a href="#slide6">Services</a></li>
+            <li><a href="#slide7">Packages</a></li>
+            <li><a href="#slide9">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- 컨텐츠 영역 -->
+    <div class="content">
+        <!-- 슬라이드 1 -->
+        <div id="slide1" class="slide-container">
+            <iframe id="slide1-frame" src="slide1.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
+        
+        <div class="slide-divider"></div>
+        
+        <!-- 슬라이드 2 -->
+        <div id="slide2" class="slide-container">
+            <iframe id="slide2-frame" src="slide2.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
+        
+        <div class="slide-divider"></div>
+        
+        <!-- 슬라이드 3 -->
+        <div id="slide3" class="slide-container">
+            <iframe id="slide3-frame" src="slide3.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
+        
+        <div class="slide-divider"></div>
+        
+        <!-- 슬라이드 4 -->
+        <div id="slide4" class="slide-container">
+            <iframe id="slide4-frame" src="slide4.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
+        
+        <div class="slide-divider"></div>
+        
+        <!-- 슬라이드 5 -->
+        <div id="slide5" class="slide-container">
+            <iframe id="slide5-frame" src="slide5.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
+        
+        <div class="slide-divider"></div>
+        
+        <!-- 슬라이드 6 -->
+        <div id="slide6" class="slide-container">
+            <iframe id="slide6-frame" src="slide6.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
+        
+        <div class="slide-divider"></div>
+        
+        <!-- 슬라이드 7 -->
+        <div id="slide7" class="slide-container">
+            <iframe id="slide7-frame" src="slide7.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
+        
+        <div class="slide-divider"></div>
+        
+        <!-- 슬라이드 8 -->
+        <div id="slide8" class="slide-container">
+            <iframe id="slide8-frame" src="slide8.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
+        
+        <div class="slide-divider"></div>
+        
+        <!-- 슬라이드 9 -->
+        <div id="slide9" class="slide-container">
+            <iframe id="slide9-frame" src="slide9.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+        </div>
     </div>
 
     <!-- 맨 위로 가기 버튼 -->
@@ -173,6 +249,30 @@
                         }
                     };
                 }
+            });
+
+            // 네비게이션 바 메뉴 활성화 설정
+            const navLinks = document.querySelectorAll('.navbar-menu a');
+            const sections = document.querySelectorAll('.slide-container');
+            
+            // 스크롤 이벤트로 현재 보이는 섹션에 따라 메뉴 활성화
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(function(section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if(pageYOffset >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
             });
         });
     </script>
