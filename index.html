@@ -45,15 +45,16 @@
             padding: 0;
         }
         .navbar-menu li {
-            margin-left: 20px;
+            margin-left: 15px; /* 간격 줄임 */
         }
         .navbar-menu a {
             color: white;
             text-decoration: none;
             font-size: 16px;
-            padding: 5px 10px;
+            padding: 5px 8px; /* 패딩 줄임 */
             border-radius: 5px;
             transition: all 0.3s ease;
+            white-space: nowrap; /* 텍스트 줄바꿈 방지 */
         }
         .navbar-menu a:hover {
             background-color: rgba(255, 255, 255, 0.1);
@@ -133,7 +134,7 @@
         <ul class="navbar-menu">
             <li><a href="#slide1" class="active">Home</a></li>
             <li><a href="#slide3">Overview</a></li>
-            <li><a href="#slide4">Korean Market</a></li>
+            <li><a href="#slide4">Market</a></li>
             <li><a href="#slide5">Listing</a></li>
             <li><a href="#slide6">Services</a></li>
             <li><a href="#slide7">Packages</a></li>
