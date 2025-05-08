@@ -26,54 +26,6 @@
             background-position: 0 0, 15px 15px;
             z-index: 0;
         }
-        .slide-section {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding: 20px;
-            scroll-margin-top: 60px;
-        }
-        .slide-content {
-            width: 100%;
-            max-width: 1280px;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            margin: 20px 0;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-            position: relative;
-            z-index: 10;
-        }
-        .slide-number {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 215, 0, 0.3);
-            color: #ffd700;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-        .title {
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-        .subtitle {
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            color: #ffd700;
-        }
-        .glow-effect {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            filter: blur(70px);
-            z-index: 0;
-        }
         .navigation {
             position: fixed;
             top: 0;
@@ -99,16 +51,8 @@
             background-color: rgba(255, 215, 0, 0.3);
             color: #ffd700;
         }
-        .feature-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            transition: all 0.3s;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        .main-container {
+            padding-top: 60px;
         }
         .back-to-top {
             position: fixed;
@@ -131,76 +75,6 @@
             background-color: rgba(255, 215, 0, 1);
             transform: translateY(-3px);
         }
-        .service-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        .service-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        .package-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            height: 100%;
-            transition: all 0.3s;
-        }
-        .package-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-        }
-        .package-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-        .price-tag {
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .benefit-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .benefit-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
-        .contact-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
         .nav-container {
             overflow-x: auto;
             white-space: nowrap;
@@ -215,8 +89,6 @@
 <body>
     <!-- Background elements -->
     <div class="crypto-grid"></div>
-    <div class="glow-effect bg-yellow-500 opacity-10" style="top: -100px; right: -100px;"></div>
-    <div class="glow-effect bg-blue-500 opacity-10" style="bottom: -100px; left: -100px;"></div>
     
     <!-- Top navigation -->
     <div class="navigation">
@@ -224,318 +96,60 @@
             <div class="flex justify-between items-center">
                 <div class="text-xl font-bold text-yellow-300">HighCrypto</div>
                 <div class="nav-container flex space-x-2">
-                    <a href="#slide1" class="nav-item active">Cover</a>
-                    <a href="#slide2" class="nav-item">Contents</a>
-                    <a href="#slide3" class="nav-item">Overview</a>
-                    <a href="#slide4" class="nav-item">Korean Market</a>
-                    <a href="#slide5" class="nav-item">Listing</a>
-                    <a href="#slide6" class="nav-item">Services</a>
-                    <a href="#slide7" class="nav-item">Packages</a>
-                    <a href="#slide8" class="nav-item">Benefits</a>
-                    <a href="#slide9" class="nav-item">Contact</a>
+                    <a href="#section1" class="nav-item active">Cover</a>
+                    <a href="#section2" class="nav-item">Contents</a>
+                    <a href="#section3" class="nav-item">Overview</a>
+                    <a href="#section4" class="nav-item">Korean Market</a>
+                    <a href="#section5" class="nav-item">Listing</a>
+                    <a href="#section6" class="nav-item">Services</a>
+                    <a href="#section7" class="nav-item">Packages</a>
+                    <a href="#section8" class="nav-item">Benefits</a>
+                    <a href="#section9" class="nav-item">Contact</a>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Slide 1: Cover -->
-    <section id="slide1" class="slide-section">
-        <div class="slide-content flex flex-col items-center justify-center text-center">
-            <div class="slide-number">Slide 1</div>
-            <div class="mb-8">
-                <h1 class="title text-6xl font-extrabold text-white mb-6 tracking-tight">Korean Marketing Proposal for<br/>Global Memecoin Projects</h1>
-                <p class="subtitle text-2xl font-semibold mb-8">"Reach Higher with HighCrypto"</p>
-                <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mx-auto mb-8"></div>
-                <p class="text-xl text-blue-200 font-medium">Korea's Premier Crypto Marketing Agency</p>
-            </div>
-            
-            <div class="flex space-x-12 mt-12">
-                <div class="h-14 w-14 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center opacity-80">
-                    <i class="fas fa-chart-line text-2xl text-white"></i>
-                </div>
-                <div class="h-14 w-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center opacity-80">
-                    <i class="fas fa-globe-asia text-2xl text-white"></i>
-                </div>
-                <div class="h-14 w-14 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center opacity-80">
-                    <i class="fas fa-comments text-2xl text-white"></i>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Main content container -->
+    <div class="main-container">
+        <iframe id="section1" src="slide1.html" width="100%" height="100vh" frameborder="0" scrolling="no"></iframe>
+        <iframe id="section2" src="slide2.html" width="100%" height="100vh" frameborder="0" scrolling="no"></iframe>
+        <iframe id="section3" src="slide3.html" width="100%" height="100vh" frameborder="0" scrolling="no"></iframe>
+        <iframe id="section4" src="slide4.html" width="100%" height="100vh" frameborder="0" scrolling="no"></iframe>
+        <iframe id="section5" src="slide5.html" width="100%" height="100vh" frameborder="0" scrolling="no"></iframe>
+        <iframe id="section6" src="slide6.html" width="100%" height="100vh" frameborder="0" scrolling="no"></iframe>
+        <iframe id="section7" src="slide7.html" width="100%" height="100vh" frameborder="0" scrolling="no"></iframe>
+        <iframe id="section8" src="slide8.html" width="100%" height="100vh" frameborder="0" scrolling="no"></iframe>
+        <iframe id="section9" src="slide9.html" width="100%" height="100vh" frameborder="0" scrolling="no"></iframe>
+    </div>
     
-    <!-- Slide 2: Table of Contents -->
-    <section id="slide2" class="slide-section">
-        <div class="slide-content">
-            <div class="slide-number">Slide 2</div>
-            <h1 class="title text-5xl font-bold text-white mb-4">Table of Contents</h1>
-            <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mb-8"></div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-                <div class="space-y-6">
-                    <!-- TOC items 1-4 -->
-                    <div class="flex items-center p-3 rounded-lg hover:bg-opacity-10 hover:bg-white transition-all">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mr-5">
-                            <i class="fas fa-file-alt text-xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-blue-300">1. Proposal Overview</h3>
-                            <p class="text-white text-opacity-60 text-sm">Introduction to HighCrypto's services</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center p-3 rounded-lg hover:bg-opacity-10 hover:bg-white transition-all">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mr-5">
-                            <i class="fas fa-chart-line text-xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-green-300">2. Importance of the Korean Market</h3>
-                            <p class="text-white text-opacity-60 text-sm">Why Korea is crucial for memecoin projects</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center p-3 rounded-lg hover:bg-opacity-10 hover:bg-white transition-all">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mr-5">
-                            <i class="fas fa-exchange-alt text-xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-purple-300">3. Korean Exchange Listing Requirements</h3>
-                            <p class="text-white text-opacity-60 text-sm">What you need to get listed on Korean exchanges</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center p-3 rounded-lg hover:bg-opacity-10 hover:bg-white transition-all">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg mr-5">
-                            <i class="fas fa-bullhorn text-xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-red-300">4. Detailed Marketing Services</h3>
-                            <p class="text-white text-opacity-60 text-sm">Our comprehensive service offerings</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="space-y-6">
-                    <!-- TOC items 5-7 -->
-                    <div class="flex items-center p-3 rounded-lg hover:bg-opacity-10 hover:bg-white transition-all">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg mr-5">
-                            <i class="fas fa-box-open text-xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-yellow-300">5. Service Package Proposals</h3>
-                            <p class="text-white text-opacity-60 text-sm">Tailored packages to meet your goals</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center p-3 rounded-lg hover:bg-opacity-10 hover:bg-white transition-all">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center shadow-lg mr-5">
-                            <i class="fas fa-trophy text-xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-pink-300">6. Expected Benefits and Conclusion</h3>
-                            <p class="text-white text-opacity-60 text-sm">What you'll gain from our partnership</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center p-3 rounded-lg hover:bg-opacity-10 hover:bg-white transition-all">
-                        <div class="h-12 w-12 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center shadow-lg mr-5">
-                            <i class="fas fa-address-card text-xl text-white"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-indigo-300">7. Contact Information</h3>
-                            <p class="text-white text-opacity-60 text-sm">How to reach us for consultation</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <div class="inline-block bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 text-black font-bold px-6 py-3 rounded-full transform transition-transform duration-300 hover:scale-105">
-                    <div class="flex items-center">
-                        <i class="fas fa-paw mr-2"></i>
-                        <span>Let's navigate your memecoin success story!</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Back to top button -->
+    <a href="#section1" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
     
-    <!-- Slide 3: Proposal Overview -->
-    <section id="slide3" class="slide-section">
-        <div class="slide-content">
-            <div class="slide-number">Slide 3</div>
-            <h1 class="title text-5xl font-bold text-white mb-4">Proposal Overview</h1>
-            <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mb-8"></div>
+    <script>
+        // Add active class to navigation items when scrolling
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('iframe');
+            const navItems = document.querySelectorAll('.nav-item');
             
-            <div class="mb-10 max-w-4xl">
-                <div class="flex items-center mb-6">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg mr-4">
-                        <i class="fas fa-rocket text-xl text-white"></i>
-                    </div>
-                    <h2 class="text-yellow-300 text-3xl font-semibold">Hello, we are HighCrypto</h2>
-                </div>
-                <p class="text-blue-100 text-xl leading-relaxed">Korea's premier cryptocurrency marketing agency with the motto:</p>
-                <p class="text-2xl text-yellow-300 font-bold italic mt-2 mb-4">"Reach higher with HighCrypto"</p>
-            </div>
+            let current = '';
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-                <!-- Card 1 -->
-                <div class="feature-card">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mb-4">
-                        <i class="fas fa-chart-line text-xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-blue-300 mb-3">Strategic Marketing</h3>
-                    <p class="text-white text-opacity-80">We provide strategic marketing services to help global cryptocurrency projects succeed in the Korean market.</p>
-                </div>
-                
-                <!-- Card 2 -->
-                <div class="feature-card">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mb-4">
-                        <i class="fas fa-trophy text-xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-purple-300 mb-3">Proven Success</h3>
-                    <p class="text-white text-opacity-80">Based on our successful experience with numerous global crypto projects entering Korea.</p>
-                </div>
-                
-                <!-- Card 3 -->
-                <div class="feature-card">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mb-4">
-                        <i class="fas fa-users text-xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-green-300 mb-3">Expert Team</h3>
-                    <p class="text-white text-opacity-80">Our team consists of marketing professionals with deep understanding of both CEX and DEX markets.</p>
-                </div>
-                
-                <!-- Card 4 -->
-                <div class="feature-card">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg mb-4">
-                        <i class="fas fa-search-dollar text-xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-red-300 mb-3">Market Analysis</h3>
-                    <p class="text-white text-opacity-80">We actively participate in the market daily and continuously analyze trends to keep our strategies up-to-date.</p>
-                </div>
-            </div>
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
             
-            <div class="text-center mt-12">
-                <div class="text-yellow-300 font-bold">
-                    <i class="fas fa-arrow-circle-up text-2xl mr-2"></i>
-                    <span>TO THE MOON</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Slide 4: Importance of the Korean Market -->
-    <section id="slide4" class="slide-section">
-        <div class="slide-content">
-            <div class="slide-number">Slide 4</div>
-            <h1 class="title text-5xl font-bold text-white mb-4">Importance of the Korean Market</h1>
-            <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mb-8"></div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Left column -->
-                <div class="space-y-6">
-                    <!-- Investment Rate Section -->
-                    <div class="feature-card">
-                        <div class="flex items-center mb-4">
-                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mr-3">
-                                <i class="fas fa-chart-pie text-lg text-white"></i>
-                            </div>
-                            <h2 class="text-2xl font-semibold text-blue-300">High Cryptocurrency Investment Rate</h2>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4 mb-6">
-                            <div class="text-center">
-                                <div class="flex justify-center items-center">
-                                    <span class="text-4xl font-bold text-yellow-300 mb-1">1 in 3</span>
-                                    <span class="ml-2 bg-yellow-900 bg-opacity-40 text-yellow-300 text-xs font-bold px-2 py-1 rounded-full">~33%</span>
-                                </div>
-                                <p class="text-white text-opacity-80 text-sm">Wealthy Koreans invest in cryptocurrency</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="flex justify-center items-center">
-                                    <span class="text-4xl font-bold text-yellow-300 mb-1">25M</span>
-                                </div>
-                                <p class="text-white text-opacity-80 text-sm">Koreans have crypto exchange accounts (50% of population)</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Exchange Influence Section -->
-                    <div class="feature-card">
-                        <div class="flex items-center mb-4">
-                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mr-3">
-                                <i class="fas fa-exchange-alt text-lg text-white"></i>
-                            </div>
-                            <h2 class="text-2xl font-semibold text-purple-300">Global Influence of Korean Exchanges</h2>
-                        </div>
-                        
-                        <ul class="text-white text-opacity-90 space-y-3">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
-                                <span>Upbit ranked <span class="text-yellow-300 font-bold">7th globally</span> in Forbes' "Most Trustworthy Crypto Exchanges" evaluation</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
-                                <span>Upbit ranks <span class="text-yellow-300 font-bold">4th</span> among Spot market exchanges worldwide</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-400 mt-1 mr-2"></i>
-                                <span>Despite relatively small population, Korean exchanges exert significant global influence</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Right column -->
-                <div class="space-y-6">
-                    <!-- Kimchi Premium -->
-                    <div class="feature-card">
-                        <div class="flex items-center mb-4">
-                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg mr-3">
-                                <i class="fas fa-fire text-lg text-white"></i>
-                            </div>
-                            <h2 class="text-2xl font-semibold text-red-300">The "Kimchi Premium"</h2>
-                        </div>
-                        
-                        <p class="text-white text-opacity-90 mb-4">South Korea created a unique phenomenon where crypto prices on Korean exchanges stay <span class="text-red-300 font-bold">higher than other countries</span> due to intense buying from Korean investors.</p>
-                        
-                        <div class="bg-red-900 bg-opacity-20 p-3 rounded-lg border border-red-500 border-opacity-30">
-                            <div class="flex items-center">
-                                <i class="fas fa-lightbulb text-yellow-300 text-xl mr-3"></i>
-                                <p class="text-white text-opacity-90 text-sm">Higher prices mean greater profit potential for projects that successfully enter the Korean market!</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Why Enter Korean Market -->
-                    <div class="feature-card">
-                        <div class="flex items-center mb-4">
-                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mr-3">
-                                <i class="fas fa-rocket text-lg text-white"></i>
-                            </div>
-                            <h2 class="text-2xl font-semibold text-green-300">Why Enter the Korean Market?</h2>
-                        </div>
-                        
-                        <ul class="text-white text-opacity-90 space-y-2.5">
-                            <li class="flex items-start">
-                                <i class="fas fa-chevron-right text-yellow-400 mt-1 mr-2"></i>
-                                <span>Growing influence of Korean investors on global cryptocurrency trends</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-chevron-right text-yellow-400 mt-1 mr-2"></i>
-                                <span>Korean liquidity can be <span class="text-yellow-300 font-bold">decisive</span> for project success</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-chevron-right text-yellow-400 mt-1 mr-2"></i>
-                                <span>High interest in mining and nodes with strong purchasing power</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-chevron-right text-yellow-400 mt-1 mr-2"></i>
-                                <span>One of the highest numbers of professional airdrop farmers</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-chevron-right text-yellow-400 mt-1 mr-2"></i>
-                                <span>Very active in NFT and <span class="text-yellow-300 font-bold">meme coin trading</span></span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-chevron-right text
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').substring(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
