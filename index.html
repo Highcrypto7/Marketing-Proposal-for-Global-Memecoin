@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한국 마케팅 제안서 - HighCrypto</title>
+    <title>Korean Marketing Proposal - HighCrypto</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -90,6 +90,7 @@
             border-radius: 20px;
             transition: all 0.3s;
             font-size: 14px;
+            white-space: nowrap;
         }
         .nav-item:hover {
             background-color: rgba(255, 255, 255, 0.1);
@@ -200,38 +201,47 @@
             justify-content: center;
             margin-bottom: 15px;
         }
+        .nav-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none; /* For Firefox */
+            -ms-overflow-style: none; /* For Internet Explorer and Edge */
+        }
+        .nav-container::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari, and Opera */
+        }
     </style>
 </head>
 <body>
-    <!-- 배경 요소 -->
+    <!-- Background elements -->
     <div class="crypto-grid"></div>
     <div class="glow-effect bg-yellow-500 opacity-10" style="top: -100px; right: -100px;"></div>
     <div class="glow-effect bg-blue-500 opacity-10" style="bottom: -100px; left: -100px;"></div>
     
-    <!-- 상단 네비게이션 -->
+    <!-- Top navigation -->
     <div class="navigation">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center">
                 <div class="text-xl font-bold text-yellow-300">HighCrypto</div>
-                <div class="flex space-x-2 overflow-x-auto hide-scrollbar">
-                    <a href="#slide1" class="nav-item active">표지</a>
-                    <a href="#slide2" class="nav-item">목차</a>
-                    <a href="#slide3" class="nav-item">제안 개요</a>
-                    <a href="#slide4" class="nav-item">한국 시장</a>
-                    <a href="#slide5" class="nav-item">상장 요건</a>
-                    <a href="#slide6" class="nav-item">마케팅 서비스</a>
-                    <a href="#slide7" class="nav-item">패키지 제안</a>
-                    <a href="#slide8" class="nav-item">기대 효과</a>
-                    <a href="#slide9" class="nav-item">연락처</a>
+                <div class="nav-container flex space-x-2">
+                    <a href="#slide1" class="nav-item active">Cover</a>
+                    <a href="#slide2" class="nav-item">Contents</a>
+                    <a href="#slide3" class="nav-item">Overview</a>
+                    <a href="#slide4" class="nav-item">Korean Market</a>
+                    <a href="#slide5" class="nav-item">Listing</a>
+                    <a href="#slide6" class="nav-item">Services</a>
+                    <a href="#slide7" class="nav-item">Packages</a>
+                    <a href="#slide8" class="nav-item">Benefits</a>
+                    <a href="#slide9" class="nav-item">Contact</a>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- 슬라이드 1: 표지 -->
+    <!-- Slide 1: Cover -->
     <section id="slide1" class="slide-section">
         <div class="slide-content flex flex-col items-center justify-center text-center">
-            <div class="slide-number">슬라이드 1</div>
+            <div class="slide-number">Slide 1</div>
             <div class="mb-8">
                 <h1 class="title text-6xl font-extrabold text-white mb-6 tracking-tight">Korean Marketing Proposal for<br/>Global Memecoin Projects</h1>
                 <p class="subtitle text-2xl font-semibold mb-8">"Reach Higher with HighCrypto"</p>
@@ -253,16 +263,16 @@
         </div>
     </section>
     
-    <!-- 슬라이드 2: 목차 -->
+    <!-- Slide 2: Table of Contents -->
     <section id="slide2" class="slide-section">
         <div class="slide-content">
-            <div class="slide-number">슬라이드 2</div>
+            <div class="slide-number">Slide 2</div>
             <h1 class="title text-5xl font-bold text-white mb-4">Table of Contents</h1>
             <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mb-8"></div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
                 <div class="space-y-6">
-                    <!-- 목차 아이템 1-4 -->
+                    <!-- TOC items 1-4 -->
                     <div class="flex items-center p-3 rounded-lg hover:bg-opacity-10 hover:bg-white transition-all">
                         <div class="h-12 w-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mr-5">
                             <i class="fas fa-file-alt text-xl text-white"></i>
@@ -305,7 +315,7 @@
                 </div>
                 
                 <div class="space-y-6">
-                    <!-- 목차 아이템 5-7 -->
+                    <!-- TOC items 5-7 -->
                     <div class="flex items-center p-3 rounded-lg hover:bg-opacity-10 hover:bg-white transition-all">
                         <div class="h-12 w-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg mr-5">
                             <i class="fas fa-box-open text-xl text-white"></i>
@@ -349,10 +359,10 @@
         </div>
     </section>
     
-    <!-- 슬라이드 3: 제안 개요 -->
+    <!-- Slide 3: Proposal Overview -->
     <section id="slide3" class="slide-section">
         <div class="slide-content">
-            <div class="slide-number">슬라이드 3</div>
+            <div class="slide-number">Slide 3</div>
             <h1 class="title text-5xl font-bold text-white mb-4">Proposal Overview</h1>
             <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mb-8"></div>
             
@@ -368,7 +378,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
-                <!-- 카드 1 -->
+                <!-- Card 1 -->
                 <div class="feature-card">
                     <div class="h-12 w-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mb-4">
                         <i class="fas fa-chart-line text-xl text-white"></i>
@@ -377,7 +387,7 @@
                     <p class="text-white text-opacity-80">We provide strategic marketing services to help global cryptocurrency projects succeed in the Korean market.</p>
                 </div>
                 
-                <!-- 카드 2 -->
+                <!-- Card 2 -->
                 <div class="feature-card">
                     <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mb-4">
                         <i class="fas fa-trophy text-xl text-white"></i>
@@ -386,7 +396,7 @@
                     <p class="text-white text-opacity-80">Based on our successful experience with numerous global crypto projects entering Korea.</p>
                 </div>
                 
-                <!-- 카드 3 -->
+                <!-- Card 3 -->
                 <div class="feature-card">
                     <div class="h-12 w-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mb-4">
                         <i class="fas fa-users text-xl text-white"></i>
@@ -395,7 +405,7 @@
                     <p class="text-white text-opacity-80">Our team consists of marketing professionals with deep understanding of both CEX and DEX markets.</p>
                 </div>
                 
-                <!-- 카드 4 -->
+                <!-- Card 4 -->
                 <div class="feature-card">
                     <div class="h-12 w-12 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg mb-4">
                         <i class="fas fa-search-dollar text-xl text-white"></i>
@@ -414,17 +424,17 @@
         </div>
     </section>
     
-    <!-- 슬라이드 4: 한국 시장의 중요성 -->
+    <!-- Slide 4: Importance of the Korean Market -->
     <section id="slide4" class="slide-section">
         <div class="slide-content">
-            <div class="slide-number">슬라이드 4</div>
+            <div class="slide-number">Slide 4</div>
             <h1 class="title text-5xl font-bold text-white mb-4">Importance of the Korean Market</h1>
             <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300 mb-8"></div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- 왼쪽 컬럼 -->
+                <!-- Left column -->
                 <div class="space-y-6">
-                    <!-- 투자율 섹션 -->
+                    <!-- Investment Rate Section -->
                     <div class="feature-card">
                         <div class="flex items-center mb-4">
                             <div class="h-10 w-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mr-3">
@@ -450,7 +460,7 @@
                         </div>
                     </div>
                     
-                    <!-- 거래소 영향력 섹션 -->
+                    <!-- Exchange Influence Section -->
                     <div class="feature-card">
                         <div class="flex items-center mb-4">
                             <div class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mr-3">
@@ -476,9 +486,9 @@
                     </div>
                 </div>
                 
-                <!-- 오른쪽 컬럼 -->
+                <!-- Right column -->
                 <div class="space-y-6">
-                    <!-- 김치 프리미엄 -->
+                    <!-- Kimchi Premium -->
                     <div class="feature-card">
                         <div class="flex items-center mb-4">
                             <div class="h-10 w-10 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg mr-3">
@@ -497,7 +507,7 @@
                         </div>
                     </div>
                     
-                    <!-- 한국 시장 진출 이유 -->
+                    <!-- Why Enter Korean Market -->
                     <div class="feature-card">
                         <div class="flex items-center mb-4">
                             <div class="h-10 w-10 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mr-3">
@@ -524,4 +534,8 @@
                                 <span>One of the highest numbers of professional airdrop farmers</span>
                             </li>
                             <li class="flex items-start">
-                                <i class="fas fa-chevron-right text-yellow-400 mt-1
+                                <i class="fas fa-chevron-right text-yellow-400 mt-1 mr-2"></i>
+                                <span>Very active in NFT and <span class="text-yellow-300 font-bold">meme coin trading</span></span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-chevron-right text
