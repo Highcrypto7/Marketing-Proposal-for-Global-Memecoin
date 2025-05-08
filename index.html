@@ -24,37 +24,44 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
+            padding: 15px 20px; /* 좌우 패딩 줄임 */
             z-index: 1000;
+            box-sizing: border-box;
         }
         .navbar-brand {
             color: #FFD700;
-            font-size: 24px;
+            font-size: 22px; /* 브랜드명 크기 줄임 */
             font-weight: bold;
             text-decoration: none;
             display: flex;
             align-items: center;
+            min-width: 130px; /* 브랜드 최소 너비 */
         }
         .navbar-brand i {
-            margin-right: 10px;
+            margin-right: 8px; /* 아이콘 마진 줄임 */
         }
         .navbar-menu {
             display: flex;
             list-style: none;
             margin: 0;
             padding: 0;
+            flex-wrap: nowrap; /* 줄바꿈 방지 */
+            width: auto;
+            margin-left: auto; /* 오른쪽으로 밀기 */
+            padding-right: 10px; /* 오른쪽 패딩 추가 */
         }
         .navbar-menu li {
-            margin-left: 15px; /* 간격 줄임 */
+            margin-left: 12px; /* 간격 더 줄임 */
         }
         .navbar-menu a {
             color: white;
             text-decoration: none;
-            font-size: 16px;
-            padding: 5px 8px; /* 패딩 줄임 */
+            font-size: 14px; /* 폰트 크기 줄임 */
+            padding: 5px 6px; /* 패딩 더 줄임 */
             border-radius: 5px;
             transition: all 0.3s ease;
             white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+            display: block; /* 전체 영역 클릭 가능하게 */
         }
         .navbar-menu a:hover {
             background-color: rgba(255, 255, 255, 0.1);
@@ -134,7 +141,7 @@
         <ul class="navbar-menu">
             <li><a href="#slide1" class="active">Home</a></li>
             <li><a href="#slide3">Overview</a></li>
-            <li><a href="#slide4">Market</a></li>
+            <li><a href="#slide4">Korean Market</a></li>
             <li><a href="#slide5">Listing</a></li>
             <li><a href="#slide6">Services</a></li>
             <li><a href="#slide7">Packages</a></li>
