@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposal Overview</title>
+    <title>Table of Contents</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -16,10 +16,13 @@
         }
         .slide {
             width: 1280px;
-            min-height: 720px;
+            min-height: 836px; /* Restored to original height */
             position: relative;
             background: linear-gradient(135deg, #1a1c3b 0%, #2a3074 100%);
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
         .crypto-grid {
             position: absolute;
@@ -35,19 +38,23 @@
         .title {
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
-        .feature-card {
-            backdrop-filter: blur(8px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .toc-item {
+            transition: all 0.2s ease;
         }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        .toc-item:hover {
+            transform: translateX(10px);
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .toc-icon {
+            transition: all 0.3s ease;
+        }
+        .toc-item:hover .toc-icon {
+            transform: scale(1.2);
         }
         .memecoin {
             position: absolute;
+            opacity: 0.05;
             z-index: 0;
-            opacity: 0.2;
-            filter: blur(1px);
         }
         .glow-effect {
             position: absolute;
@@ -57,91 +64,136 @@
             filter: blur(80px);
             z-index: 0;
         }
+        .bottom-text {
+            position: absolute;
+            bottom: 30px; /* Positioned lower toward the bottom of the slide */
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 10;
+            background-color: rgba(26, 28, 59, 0.7);
+            padding: 8px 16px;
+            margin: 0 auto;
+            width: fit-content;
+            border-radius: 20px;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
-    <div class="slide flex flex-col items-start justify-start p-16 relative">
+    <div class="slide p-12 relative">
         <!-- Background elements -->
         <div class="crypto-grid"></div>
-        <div class="glow-effect bg-yellow-400 opacity-10" style="top: -100px; right: -100px;"></div>
-        <div class="glow-effect bg-blue-400 opacity-10" style="bottom: -100px; left: -100px;"></div>
+        <div class="glow-effect bg-yellow-500 opacity-10" style="top: -100px; right: -100px;"></div>
+        <div class="glow-effect bg-blue-500 opacity-10" style="bottom: -100px; left: -100px;"></div>
         
-        <!-- Decorative memecoin elements -->
-        <div class="memecoin" style="top: 150px; right: 100px; font-size: 80px;">
-            <i class="fas fa-dog text-yellow-400"></i>
+        <!-- Decorative elements -->
+        <div class="memecoin" style="top: 150px; right: 100px; font-size: 180px;">
+            <i class="fas fa-dog"></i>
         </div>
-        <div class="memecoin" style="bottom: 100px; right: 200px; font-size: 70px;">
-            <i class="fas fa-rocket text-blue-400"></i>
-        </div>
-        <div class="memecoin" style="top: 450px; right: 150px; font-size: 60px;">
-            <i class="fas fa-moon text-purple-400"></i>
+        <div class="memecoin" style="bottom: 120px; left: 80px; font-size: 160px;">
+            <i class="fas fa-rocket"></i>
         </div>
         
         <!-- Main content -->
-        <div class="z-10 w-full">
+        <div class="z-10 flex flex-col h-full">
             <!-- Title -->
-            <div class="mb-10">
-                <h1 class="title text-5xl font-bold text-white mb-6">Proposal Overview</h1>
+            <div class="mb-8">
+                <h1 class="title text-5xl font-bold text-white mb-4">Table of Contents</h1>
                 <div class="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-300"></div>
             </div>
             
-            <!-- HighCrypto Introduction -->
-            <div class="mb-10 max-w-4xl">
-                <div class="flex items-center mb-6">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg mr-4">
-                        <i class="fas fa-rocket text-xl text-white"></i>
+            <!-- Table of Contents -->
+            <div class="flex justify-center">
+                <div class="w-4/5">
+                    <div class="space-y-4">
+                        <!-- Item 1 -->
+                        <div class="toc-item flex items-center p-3 rounded-lg">
+                            <div class="toc-icon h-12 w-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mr-5">
+                                <i class="fas fa-file-alt text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-blue-300">1. Proposal Overview</h3>
+                                <p class="text-white text-opacity-60 text-sm">Introduction to HighCrypto's services</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="toc-item flex items-center p-3 rounded-lg">
+                            <div class="toc-icon h-12 w-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mr-5">
+                                <i class="fas fa-chart-line text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-green-300">2. Importance of the Korean Market</h3>
+                                <p class="text-white text-opacity-60 text-sm">Why Korea is crucial for memecoin projects</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 3 -->
+                        <div class="toc-item flex items-center p-3 rounded-lg">
+                            <div class="toc-icon h-12 w-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mr-5">
+                                <i class="fas fa-exchange-alt text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-purple-300">3. Korean Exchange Listing Requirements</h3>
+                                <p class="text-white text-opacity-60 text-sm">What you need to get listed on Korean exchanges</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 4 -->
+                        <div class="toc-item flex items-center p-3 rounded-lg">
+                            <div class="toc-icon h-12 w-12 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg mr-5">
+                                <i class="fas fa-bullhorn text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-red-300">4. Detailed Marketing Services</h3>
+                                <p class="text-white text-opacity-60 text-sm">Our comprehensive service offerings</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 5 -->
+                        <div class="toc-item flex items-center p-3 rounded-lg">
+                            <div class="toc-icon h-12 w-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center shadow-lg mr-5">
+                                <i class="fas fa-box-open text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-yellow-300">5. Service Package Proposals</h3>
+                                <p class="text-white text-opacity-60 text-sm">Tailored packages to meet your goals</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 6 -->
+                        <div class="toc-item flex items-center p-3 rounded-lg">
+                            <div class="toc-icon h-12 w-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center shadow-lg mr-5">
+                                <i class="fas fa-trophy text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-pink-300">6. Expected Benefits and Conclusion</h3>
+                                <p class="text-white text-opacity-60 text-sm">What you'll gain from our partnership</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Item 7 -->
+                        <div class="toc-item flex items-center p-3 rounded-lg">
+                            <div class="toc-icon h-12 w-12 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center shadow-lg mr-5">
+                                <i class="fas fa-address-card text-xl text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-indigo-300">7. Contact Information</h3>
+                                <p class="text-white text-opacity-60 text-sm">How to reach us for consultation</p>
+                            </div>
+                        </div>
                     </div>
-                    <h2 class="text-yellow-300 text-3xl font-semibold">Hello, we are HighCrypto</h2>
-                </div>
-                <p class="text-blue-100 text-xl leading-relaxed">Korea's premier cryptocurrency marketing agency with the motto:</p>
-                <p class="text-2xl text-yellow-300 font-bold italic mt-2 mb-4">"Reach higher with HighCrypto"</p>
-            </div>
-            
-            <!-- Key points in cards -->
-            <div class="grid grid-cols-2 gap-8 mt-6">
-                <!-- Card 1 -->
-                <div class="feature-card bg-white bg-opacity-5 border border-blue-300 border-opacity-20 rounded-xl p-6 shadow-xl">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg mb-4">
-                        <i class="fas fa-chart-line text-xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-blue-300 mb-3">Strategic Marketing</h3>
-                    <p class="text-white text-opacity-80">We provide strategic marketing services to help global cryptocurrency projects succeed in the Korean market.</p>
-                </div>
-                
-                <!-- Card 2 -->
-                <div class="feature-card bg-white bg-opacity-5 border border-purple-300 border-opacity-20 rounded-xl p-6 shadow-xl">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center shadow-lg mb-4">
-                        <i class="fas fa-trophy text-xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-purple-300 mb-3">Proven Success</h3>
-                    <p class="text-white text-opacity-80">Based on our successful experience with numerous global crypto projects entering Korea.</p>
-                </div>
-                
-                <!-- Card 3 -->
-                <div class="feature-card bg-white bg-opacity-5 border border-green-300 border-opacity-20 rounded-xl p-6 shadow-xl">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg mb-4">
-                        <i class="fas fa-users text-xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-green-300 mb-3">Expert Team</h3>
-                    <p class="text-white text-opacity-80">Our team consists of marketing professionals with deep understanding of both CEX and DEX markets.</p>
-                </div>
-                
-                <!-- Card 4 -->
-                <div class="feature-card bg-white bg-opacity-5 border border-red-300 border-opacity-20 rounded-xl p-6 shadow-xl">
-                    <div class="h-12 w-12 rounded-full bg-gradient-to-br from-red-400 to-red-600 flex items-center justify-center shadow-lg mb-4">
-                        <i class="fas fa-search-dollar text-xl text-white"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-red-300 mb-3">Market Analysis</h3>
-                    <p class="text-white text-opacity-80">We actively participate in the market daily and continuously analyze trends to keep our strategies up-to-date.</p>
                 </div>
             </div>
         </div>
         
-        <!-- Bottom decoration -->
-        <div class="absolute bottom-6 right-6 opacity-80 text-center">
-            <div class="text-yellow-300 font-bold">
-                <i class="fas fa-arrow-circle-up text-2xl mr-2"></i>
-                <span>TO THE MOON</span>
+        <!-- Bottom decoration - Repositioned lower between item 7 and bottom with enhanced styling -->
+        <div class="bottom-text">
+            <div class="flex items-center justify-center text-yellow-300 font-semibold">
+                <i class="fas fa-paw mr-2 text-xl"></i>
+                <span>Let's navigate your memecoin success story!</span>
             </div>
         </div>
     </div>
