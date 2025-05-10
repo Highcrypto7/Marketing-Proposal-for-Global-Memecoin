@@ -72,6 +72,17 @@
             border-bottom: 2px solid #FFD700;
         }
 
+        /* 햄버거 메뉴 버튼 - 모바일용 */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
         /* 컨텐츠 영역 - 네비바 공간 확보 */
         .content {
             padding-top: 80px;
@@ -81,24 +92,27 @@
             width: 100%;
             max-width: 1280px;
             margin: 0 auto 30px auto; /* 슬라이드 간 간격 및 중앙 정렬 */
-            overflow: hidden;
+            overflow: visible; /* 잘림 방지 */
+            box-sizing: border-box;
+            padding: 0 10px;
         }
-        iframe {
+        
+        /* 반응형 iframe 컨테이너 */
+        .responsive-iframe-wrapper {
+            position: relative;
             width: 100%;
+            overflow: visible; /* 잘림 방지 */
+            margin: 0 auto;
+        }
+        
+        iframe {
+            width: 1280px; /* 고정 너비 설정 */
             border: none;
             display: block;
-            overflow: hidden;
+            transform-origin: 0 0;
+            max-width: none; /* max-width 제한 해제 */
+            min-height: 720px; /* 최소 높이 설정 */
         }
-        /* 각 슬라이드별 최적 높이 설정 */
-        #slide1-frame { height: 720px; }
-        #slide2-frame { height: 840px; }
-        #slide3-frame { height: 720px; }
-        #slide4-frame { height: 780px; }
-        #slide5-frame { height: 720px; }
-        #slide6-frame { height: 720px; }
-        #slide7-frame { height: 780px; }
-        #slide8-frame { height: 780px; }
-        #slide9-frame { height: 720px; }
         
         /* 구분선 */
         .slide-divider {
@@ -131,6 +145,97 @@
             background-color: #FFD700;
             color: #1a1c3b;
         }
+
+        /* 반응형 스타일 */
+        @media (max-width: 1300px) {
+            .slide-container {
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                flex-direction: column;
+                width: 100%;
+                background-color: rgba(26, 28, 59, 0.95);
+                padding: 20px 0;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+                z-index: 999;
+            }
+            
+            .navbar-menu.active {
+                transform: translateY(0);
+            }
+            
+            .navbar-menu li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .navbar-menu a {
+                padding: 10px;
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* 인쇄용 스타일 */
+        @media print {
+            /* 기본 페이지 여백 설정 */
+            @page {
+                margin: 0.5cm;
+                size: A4 portrait;
+            }
+            
+            /* 페이지 나누기 방지 */
+            .slide-container {
+                page-break-after: always;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                max-width: none;
+                overflow: visible;
+            }
+            
+            /* iframe 인쇄 설정 */
+            iframe {
+                width: 100% !important;
+                height: auto !important;
+                transform-origin: top left;
+                transform: scale(1) !important;
+                overflow: visible;
+                page-break-inside: avoid;
+            }
+            
+            /* 배경색 및 그라데이션 인쇄 */
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                background: #1a1c3b !important;
+            }
+            
+            /* 불필요한 요소 숨기기 */
+            .navbar, .back-to-top, .slide-divider, .menu-toggle {
+                display: none !important;
+            }
+            
+            /* 컨텐츠 영역 패딩 제거 */
+            .content {
+                padding-top: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -139,6 +244,9 @@
         <a href="#" class="navbar-brand">
             <i class="fas fa-rocket"></i>HighCrypto
         </a>
+        <button class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul class="navbar-menu">
             <li><a href="#slide1" class="active">Home</a></li>
             <li><a href="#slide3">Overview</a></li>
@@ -154,63 +262,81 @@
     <div class="content">
         <!-- 슬라이드 1 -->
         <div id="slide1" class="slide-container">
-            <iframe id="slide1-frame" src="slide1.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            <div class="responsive-iframe-wrapper">
+                <iframe id="slide1-frame" src="slide1.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
         </div>
         
         <div class="slide-divider"></div>
         
         <!-- 슬라이드 2 -->
         <div id="slide2" class="slide-container">
-            <iframe id="slide2-frame" src="slide2.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            <div class="responsive-iframe-wrapper">
+                <iframe id="slide2-frame" src="slide2.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
         </div>
         
         <div class="slide-divider"></div>
         
         <!-- 슬라이드 3 -->
         <div id="slide3" class="slide-container">
-            <iframe id="slide3-frame" src="slide3.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            <div class="responsive-iframe-wrapper">
+                <iframe id="slide3-frame" src="slide3.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
         </div>
         
         <div class="slide-divider"></div>
         
         <!-- 슬라이드 4 -->
         <div id="slide4" class="slide-container">
-            <iframe id="slide4-frame" src="slide4.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            <div class="responsive-iframe-wrapper">
+                <iframe id="slide4-frame" src="slide4.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
         </div>
         
         <div class="slide-divider"></div>
         
         <!-- 슬라이드 5 -->
         <div id="slide5" class="slide-container">
-            <iframe id="slide5-frame" src="slide5.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            <div class="responsive-iframe-wrapper">
+                <iframe id="slide5-frame" src="slide5.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
         </div>
         
         <div class="slide-divider"></div>
         
         <!-- 슬라이드 6 -->
         <div id="slide6" class="slide-container">
-            <iframe id="slide6-frame" src="slide6.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            <div class="responsive-iframe-wrapper">
+                <iframe id="slide6-frame" src="slide6.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
         </div>
         
         <div class="slide-divider"></div>
         
         <!-- 슬라이드 7 -->
         <div id="slide7" class="slide-container">
-            <iframe id="slide7-frame" src="slide7.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            <div class="responsive-iframe-wrapper">
+                <iframe id="slide7-frame" src="slide7.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
         </div>
         
         <div class="slide-divider"></div>
         
         <!-- 슬라이드 8 -->
         <div id="slide8" class="slide-container">
-            <iframe id="slide8-frame" src="slide8.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            <div class="responsive-iframe-wrapper">
+                <iframe id="slide8-frame" src="slide8.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
         </div>
         
         <div class="slide-divider"></div>
         
         <!-- 슬라이드 9 -->
         <div id="slide9" class="slide-container">
-            <iframe id="slide9-frame" src="slide9.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            <div class="responsive-iframe-wrapper">
+                <iframe id="slide9-frame" src="slide9.html" scrolling="no" frameborder="0" allowfullscreen="true" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+            </div>
         </div>
     </div>
 
@@ -218,9 +344,8 @@
     <a href="#slide1" class="back-to-top">↑</a>
 
     <script>
-        // iframe 내용이 로드되면 스크립트 실행을 보장
         document.addEventListener('DOMContentLoaded', function() {
-            // 슬라이드 프레임 목록
+            // 슬라이드 프레임 목록 - 기본 높이 제거하고 실제 높이 감지
             const slideFrames = [
                 { id: 'slide1-frame', defaultHeight: 720 },
                 { id: 'slide2-frame', defaultHeight: 840 },
@@ -233,33 +358,106 @@
                 { id: 'slide9-frame', defaultHeight: 720 }
             ];
             
-            // 각 iframe에 대해 로드 이벤트 리스너 등록
+            // 실제 iframe 내용 높이를 감지하는 함수
+            function detectIframeHeight(iframe) {
+                try {
+                    // iframe 내부 document에 접근
+                    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+                    
+                    // 슬라이드 컨테이너 또는 body의 스크롤 높이 찾기
+                    const slideElement = iframeDocument.querySelector('.slide-container') || 
+                                         iframeDocument.querySelector('.slide') || 
+                                         iframeDocument.body;
+                    
+                    // 실제 콘텐츠 높이 측정 (복수의 방법 시도)
+                    const contentHeight = Math.max(
+                        slideElement.scrollHeight,
+                        slideElement.offsetHeight,
+                        slideElement.clientHeight,
+                        iframeDocument.documentElement.scrollHeight,
+                        iframeDocument.documentElement.offsetHeight,
+                        iframeDocument.documentElement.clientHeight
+                    );
+                    
+                    // 슬라이드별 높이 조정 - 여백 문제 수정
+                    if (iframe.id === 'slide5-frame') {
+                        // 5번 슬라이드 여백 조정
+                        return contentHeight - 100; // 100px 정도만 제거
+                    } else if (iframe.id === 'slide7-frame') {
+                        // 7번 슬라이드에는 약간 더 추가 여백 제거
+                        return contentHeight - 150;
+                    } else if (iframe.id === 'slide9-frame') {
+                        // 9번 슬라이드에는 약간 더 추가 여백 제거
+                        return contentHeight - 100;
+                    }
+                    
+                    // 기본 높이는 그대로 유지
+                    return contentHeight;
+                    
+                } catch (e) {
+                    console.error('iframe 높이 감지 오류:', e);
+                    return slideFrames.find(frame => frame.id === iframe.id)?.defaultHeight || 720; // 오류 시 기본값 반환
+                }
+            }
+            
+            // 반응형 처리 함수
+            function adjustIframes() {
+                const containerWidths = {};
+                const containers = document.querySelectorAll('.slide-container');
+                
+                // 각 컨테이너의 실제 너비 측정
+                containers.forEach(container => {
+                    const id = container.id;
+                    containerWidths[id] = container.offsetWidth;
+                });
+                
+                slideFrames.forEach(function(frame) {
+                    const iframe = document.getElementById(frame.id);
+                    const wrapper = iframe.parentElement;
+                    const container = wrapper.parentElement;
+                    const containerWidth = container.offsetWidth;
+                    
+                    if (iframe) {
+                        // 항상 1280px 기준으로 비율 계산 (원본 슬라이드 너비)
+                        const scale = containerWidth / 1280;
+                        
+                        // iframe 스타일 설정 - 중앙 정렬
+                        iframe.style.transform = `scale(${scale})`;
+                        iframe.style.transformOrigin = 'top center';
+                        iframe.style.position = 'relative';
+                        iframe.style.left = '50%';
+                        iframe.style.marginLeft = '-640px'; // 1280px 너비의 절반
+                        
+                        // iframe이 이미 로드된 경우
+                        if (iframe.complete || iframe.contentWindow) {
+                            const realHeight = detectIframeHeight(iframe);
+                            iframe.style.height = `${realHeight}px`;
+                            wrapper.style.height = `${realHeight * scale}px`;
+                        }
+                    }
+                });
+            }
+            
+            // 각 iframe의 로드 이벤트 처리
             slideFrames.forEach(function(frame) {
                 const iframe = document.getElementById(frame.id);
+                
                 if (iframe) {
                     iframe.onload = function() {
-                        try {
-                            // 약간의 추가 높이를 더해 여백 확보
-                            iframe.style.height = (frame.defaultHeight + 20) + 'px';
-                            
-                            // 메인 슬라이드 찾기 시도
-                            const slideElement = iframe.contentWindow.document.querySelector('.slide');
-                            if (slideElement) {
-                                const slideHeight = slideElement.offsetHeight;
-                                // 슬라이드 실제 높이가 기본값보다 크면 조정
-                                if (slideHeight > frame.defaultHeight) {
-                                    iframe.style.height = (slideHeight + 20) + 'px';
-                                }
-                            }
-                        } catch (e) {
-                            console.log('iframe 높이 조정 실패: ', e);
-                            // 오류 시 기본 높이 사용
-                            iframe.style.height = frame.defaultHeight + 'px';
-                        }
+                        // iframe 높이 감지 및 설정
+                        const realHeight = detectIframeHeight(iframe);
+                        iframe.style.height = `${realHeight}px`;
+                        
+                        // 반응형 조정 적용
+                        adjustIframes();
                     };
                 }
             });
-
+            
+            // 초기 실행 및 리사이즈 이벤트에 연결
+            window.addEventListener('load', adjustIframes);
+            window.addEventListener('resize', adjustIframes);
+            
             // 네비게이션 바 메뉴 활성화 설정
             const navLinks = document.querySelectorAll('.navbar-menu a');
             const sections = document.querySelectorAll('.slide-container');
@@ -280,6 +478,25 @@
                     link.classList.remove('active');
                     if(link.getAttribute('href') === '#' + current) {
                         link.classList.add('active');
+                    }
+                });
+            });
+            
+            // 모바일 메뉴 토글
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navbarMenu = document.querySelector('.navbar-menu');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navbarMenu.classList.toggle('active');
+                });
+            }
+            
+            // 메뉴 링크 클릭시 모바일 메뉴 닫기
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        navbarMenu.classList.remove('active');
                     }
                 });
             });
