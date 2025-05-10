@@ -338,43 +338,23 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 기본 높이 (충분히 크게 설정)
-            const defaultHeights = {
-                'slide1-frame': 1000,
-                'slide2-frame': 1000,
-                'slide3-frame': 1000,
-                'slide4-frame': 1200,
-                'slide5-frame': 1000,
-                'slide6-frame': 1000,
-                'slide7-frame': 1200,
-                'slide8-frame': 1200,
-                'slide9-frame': 1000
+            // 각 iframe에 대한 최적 높이 설정 - 실제 슬라이드 파일에서 확인한 값들로 설정
+            const slideHeights = {
+                'slide1-frame': 720,
+                'slide2-frame': 836, 
+                'slide3-frame': 720,
+                'slide4-frame': 780,
+                'slide5-frame': 720,
+                'slide6-frame': 720,
+                'slide7-frame': 780,
+                'slide8-frame': 780,
+                'slide9-frame': 720
             };
-            
-            // 각 iframe 요소
-            const frames = {
-                'slide1-frame': document.getElementById('slide1-frame'),
-                'slide2-frame': document.getElementById('slide2-frame'),
-                'slide3-frame': document.getElementById('slide3-frame'),
-                'slide4-frame': document.getElementById('slide4-frame'),
-                'slide5-frame': document.getElementById('slide5-frame'),
-                'slide6-frame': document.getElementById('slide6-frame'),
-                'slide7-frame': document.getElementById('slide7-frame'),
-                'slide8-frame': document.getElementById('slide8-frame'),
-                'slide9-frame': document.getElementById('slide9-frame')
-            };
-            
-            // 일단 모든 iframe에 충분한 높이 설정
-            for (const id in frames) {
-                if (frames[id]) {
-                    frames[id].style.height = defaultHeights[id] + 'px';
-                }
-            }
             
             // 반응형 처리 함수
             function adjustIframes() {
-                for (const id in frames) {
-                    const iframe = frames[id];
+                for (const id in slideHeights) {
+                    const iframe = document.getElementById(id);
                     if (!iframe) continue;
                     
                     const wrapper = iframe.parentElement;
@@ -385,55 +365,20 @@
                     const scale = containerWidth / 1280;
                     
                     // iframe 스타일 설정
+                    iframe.style.height = slideHeights[id] + 'px';
                     iframe.style.transform = `scale(${scale})`;
                     iframe.style.transformOrigin = 'top center';
                     iframe.style.position = 'relative';
                     iframe.style.left = '50%';
                     iframe.style.marginLeft = '-640px'; // 1280px 너비의 절반
                     
-                    // 래퍼 높이 조정
-                    wrapper.style.height = (iframe.offsetHeight * scale) + 'px';
-                }
-            }
-            
-            // 각 iframe 로드 시 래퍼 높이 조정
-            for (const id in frames) {
-                const iframe = frames[id];
-                if (!iframe) continue;
-                
-                iframe.onload = function() {
-                    try {
-                        // iframe 내부의 전체 높이 구하기 위한 시도
-                        setTimeout(function() {
-                            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                            const slideElement = iframeDoc.querySelector('.slide') || iframeDoc.body;
-                            
-                            if (slideElement) {
-                                // 실제 컨텐츠 높이 + 여유공간 확보
-                                let contentHeight = Math.max(
-                                    slideElement.scrollHeight, 
-                                    slideElement.offsetHeight,
-                                    1000 // 최소 높이 보장
-                                );
-                                
-                                // 충분히 높게 설정하여 잘림 방지
-                                iframe.style.height = (contentHeight + 100) + 'px'; // 100px 추가 여유 공간
-                                adjustIframes(); // 높이 조정 후 반응형 처리
-                            }
-                        }, 200); // 약간 지연시켜 콘텐츠 로드 보장
-                    } catch (e) {
-                        console.error('iframe 높이 조정 오류:', e);
-                    }
+                    // 래퍼 높이 조정 (스케일링 적용)
+                    wrapper.style.height = (slideHeights[id] * scale) + 'px';
                 }
             }
             
             // 초기 실행 및 리사이즈 이벤트에 연결
-            window.addEventListener('load', function() {
-                adjustIframes();
-                // 모든 내용 로드 후 다시 한번 조정 (지연 로딩 요소 대응)
-                setTimeout(adjustIframes, 500);
-            });
-            
+            window.addEventListener('load', adjustIframes);
             window.addEventListener('resize', adjustIframes);
             
             // 네비게이션 바 메뉴 활성화 설정
