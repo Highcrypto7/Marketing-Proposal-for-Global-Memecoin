@@ -338,17 +338,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 슬라이드 정의 및 높이 설정
+            // 슬라이드 정의 및 높이 설정 - 하단 잘림 문제를 해결하기 위해 충분한 높이 할당
             const slideHeights = {
-                'slide1-frame': 720,
-                'slide2-frame': 836, 
-                'slide3-frame': 720,
-                'slide4-frame': 780,
-                'slide5-frame': 720,
-                'slide6-frame': 720,
-                'slide7-frame': 780,
-                'slide8-frame': 780,
-                'slide9-frame': 720
+                'slide1-frame': 720,  // 정상적인 슬라이드
+                'slide2-frame': 840,  // 정상적인 슬라이드
+                'slide3-frame': 780,  // 하단 잘림 발견 - 높이 증가
+                'slide4-frame': 850,  // 하단 잘림 발견 - 높이 증가
+                'slide5-frame': 780,  // 하단 잘림 발견 - 높이 증가
+                'slide6-frame': 720,  // 정상적인 슬라이드
+                'slide7-frame': 850,  // 하단 잘림 발견 - 높이 증가
+                'slide8-frame': 850,  // 하단 잘림 발견 - 높이 증가
+                'slide9-frame': 780   // 하단 잘림 발견 - 높이 증가
             };
             
             // 반응형 처리 함수 - 단순화함
@@ -370,7 +370,7 @@
                     iframe.style.left = '50%';
                     iframe.style.marginLeft = '-640px'; // 1280px 너비의 절반
                     
-                    // 고정 높이 설정 - 여백 최소화
+                    // 고정 높이 설정 - 여백 최소화하면서도 충분한 공간 확보
                     iframe.style.height = slideHeights[id] + 'px';
                     wrapper.style.height = (slideHeights[id] * scale) + 'px';
                 }
