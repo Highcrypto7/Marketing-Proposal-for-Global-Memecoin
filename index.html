@@ -103,13 +103,15 @@
             width: 100%;
             overflow: visible;
             margin: 0 auto;
+            height: auto;
         }
         
         iframe {
             width: 1280px;
+            height: 720px;
             border: none;
             display: block;
-            transform-origin: 0 0;
+            transform-origin: top left;
             max-width: none;
         }
         
@@ -338,101 +340,51 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 슬라이드 프레임 목록
-            const slideFrames = [
-                { id: 'slide1-frame' },
-                { id: 'slide2-frame' },
-                { id: 'slide3-frame' },
-                { id: 'slide4-frame' },
-                { id: 'slide5-frame' },
-                { id: 'slide6-frame' },
-                { id: 'slide7-frame' },
-                { id: 'slide8-frame' },
-                { id: 'slide9-frame' }
-            ];
+            // 실제 크기에 맞는 높이 설정 - 문제가 있던 슬라이드(3,5,8)의 높이 증가
+            const slideHeights = {
+                'slide1-frame': 720,  // 정상
+                'slide2-frame': 840,  // 정상
+                'slide3-frame': 850,  // 증가 (이전 720)
+                'slide4-frame': 800,  // 약간 증가 (이전 780)
+                'slide5-frame': 850,  // 증가 (이전 720)
+                'slide6-frame': 720,  // 정상
+                'slide7-frame': 800,  // 약간 증가 (이전 780)
+                'slide8-frame': 900,  // 크게 증가 (이전 780)
+                'slide9-frame': 750   // 약간 증가 (이전 720)
+            };
             
-            // 실제 iframe 내용 높이를 감지하는 함수 - 여백 제거
-            function detectIframeHeight(iframe) {
-                try {
-                    // iframe 내부 document에 접근
-                    const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+            // 화면 크기에 맞게 iframe 크기 조정
+            function resizeIframes() {
+                const frames = document.querySelectorAll('iframe');
+                frames.forEach(frame => {
+                    // 적절한 높이 가져오기
+                    const height = slideHeights[frame.id] || 720;
                     
-                    // 슬라이드 요소 찾기 - .slide 클래스 우선 사용
-                    const slideElement = iframeDocument.querySelector('.slide') || 
-                                         iframeDocument.body;
-                    
-                    // 실제 콘텐츠 높이 측정
-                    return Math.max(
-                        slideElement.scrollHeight,
-                        slideElement.offsetHeight,
-                        slideElement.clientHeight
-                    );
-                    
-                } catch (e) {
-                    console.error('iframe 높이 감지 오류:', e);
-                    // 슬라이드별 기본 높이
-                    const defaultHeights = {
-                        'slide1-frame': 720,
-                        'slide2-frame': 840,
-                        'slide3-frame': 720,
-                        'slide4-frame': 780,
-                        'slide5-frame': 720,
-                        'slide6-frame': 720,
-                        'slide7-frame': 780,
-                        'slide8-frame': 780,
-                        'slide9-frame': 720
-                    };
-                    return defaultHeights[iframe.id] || 720;
-                }
-            }
-            
-            // 반응형 처리 함수
-            function adjustIframes() {
-                slideFrames.forEach(function(frame) {
-                    const iframe = document.getElementById(frame.id);
-                    if (!iframe) return;
-                    
-                    const wrapper = iframe.parentElement;
+                    // 컨테이너 너비 측정
+                    const wrapper = frame.parentElement;
                     const container = wrapper.parentElement;
-                    const containerWidth = container.offsetWidth;
+                    const containerWidth = container.clientWidth;
                     
-                    // 항상 1280px 기준으로 비율 계산
+                    // 스케일 계산 (iframe 원본 너비 1280px 기준)
                     const scale = containerWidth / 1280;
                     
                     // iframe 스타일 설정 - 중앙 정렬
-                    iframe.style.transform = `scale(${scale})`;
-                    iframe.style.transformOrigin = 'top center';
-                    iframe.style.position = 'relative';
-                    iframe.style.left = '50%';
-                    iframe.style.marginLeft = '-640px'; // 1280px 너비의 절반
+                    frame.style.width = '1280px';
+                    frame.style.height = height + 'px';
+                    frame.style.transformOrigin = 'top center';
+                    frame.style.transform = `scale(${scale})`;
+                    frame.style.position = 'relative';
+                    frame.style.left = '50%';
+                    frame.style.marginLeft = '-640px'; // 1280px 너비의 절반
                     
-                    // iframe이 이미 로드된 경우
-                    if (iframe.complete || iframe.contentWindow) {
-                        const realHeight = detectIframeHeight(iframe);
-                        iframe.style.height = `${realHeight}px`;
-                        wrapper.style.height = `${realHeight * scale}px`;
-                    }
+                    // wrapper 높이 설정 - 스케일링된 높이에 맞게 정확히 설정
+                    wrapper.style.height = (height * scale) + 'px';
                 });
             }
             
-            // 각 iframe의 로드 이벤트 처리
-            slideFrames.forEach(function(frame) {
-                const iframe = document.getElementById(frame.id);
-                if (!iframe) return;
-                
-                iframe.onload = function() {
-                    // iframe 높이 감지 및 설정
-                    const realHeight = detectIframeHeight(iframe);
-                    iframe.style.height = `${realHeight}px`;
-                    
-                    // 반응형 조정 적용
-                    adjustIframes();
-                };
-            });
-            
-            // 초기 실행 및 리사이즈 이벤트에 연결
-            window.addEventListener('load', adjustIframes);
-            window.addEventListener('resize', adjustIframes);
+            // 초기 및 창 크기 변경 시 실행
+            window.addEventListener('load', resizeIframes);
+            window.addEventListener('resize', resizeIframes);
             
             // 네비게이션 바 메뉴 활성화 설정
             const navLinks = document.querySelectorAll('.navbar-menu a');
