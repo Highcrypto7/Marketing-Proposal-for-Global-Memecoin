@@ -108,10 +108,9 @@
         
         iframe {
             width: 1280px;
-            height: 720px;
             border: none;
             display: block;
-            transform-origin: top left;
+            transform-origin: 0 0;
             max-width: none;
         }
         
@@ -340,17 +339,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 실제 크기에 맞는 높이 설정 - 문제가 있던 슬라이드(3,5,8)의 높이 증가
+            // 슬라이드 높이 대폭 증가 - 문제가 있는 슬라이드는 훨씬 더 크게 설정
             const slideHeights = {
                 'slide1-frame': 720,  // 정상
                 'slide2-frame': 840,  // 정상
-                'slide3-frame': 850,  // 증가 (이전 720)
-                'slide4-frame': 800,  // 약간 증가 (이전 780)
-                'slide5-frame': 850,  // 증가 (이전 720)
+                'slide3-frame': 720,  // 정상
+                'slide4-frame': 1000, // 대폭 증가 (이전 780)
+                'slide5-frame': 1000, // 대폭 증가 (이전 720)
                 'slide6-frame': 720,  // 정상
-                'slide7-frame': 800,  // 약간 증가 (이전 780)
-                'slide8-frame': 900,  // 크게 증가 (이전 780)
-                'slide9-frame': 750   // 약간 증가 (이전 720)
+                'slide7-frame': 1000, // 대폭 증가 (이전 780)
+                'slide8-frame': 1000, // 대폭 증가 (이전 780)
+                'slide9-frame': 1000  // 대폭 증가 (이전 720)
             };
             
             // 화면 크기에 맞게 iframe 크기 조정
