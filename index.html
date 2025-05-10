@@ -338,17 +338,18 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 각 iframe에 대한 최적 높이 설정 - 실제 슬라이드 파일에서 확인한 값들로 설정
+            // 슬라이드 실제 내용물 높이를 고려한 충분한 높이 설정
+            // 특히 문제가 있었던 슬라이드들에 더 많은 공간 할당
             const slideHeights = {
-                'slide1-frame': 720,
-                'slide2-frame': 836, 
-                'slide3-frame': 720,
-                'slide4-frame': 780,
-                'slide5-frame': 720,
-                'slide6-frame': 720,
-                'slide7-frame': 780,
-                'slide8-frame': 780,
-                'slide9-frame': 720
+                'slide1-frame': 720,  // 문제 없음
+                'slide2-frame': 840,  // 문제 없음
+                'slide3-frame': 830,  // 하단 잘림 - 충분한 높이 제공
+                'slide4-frame': 900,  // 하단 잘림 - 충분한 높이 제공
+                'slide5-frame': 830,  // 하단 잘림 - 충분한 높이 제공
+                'slide6-frame': 720,  // 문제 없음
+                'slide7-frame': 900,  // 하단 잘림 - 충분한 높이 제공
+                'slide8-frame': 900,  // 하단 잘림 - 충분한 높이 제공
+                'slide9-frame': 830   // 하단 잘림 - 충분한 높이 제공
             };
             
             // 반응형 처리 함수
