@@ -337,13 +337,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 슬라이드별 높이 설정 - 5번 슬라이드 여백 줄임
+            // 슬라이드별 높이 설정 - 5번 슬라이드 높이 조정
             const iframeHeights = {
                 'slide1-frame': 720,
                 'slide2-frame': 836,
                 'slide3-frame': 840,
                 'slide4-frame': 860,
-                'slide5-frame': 760,  // 880에서 760으로 줄임
+                'slide5-frame': 820,  // 760에서 820으로 증가 (이전 880보다는 작지만 760보다는 큰 값)
                 'slide6-frame': 720,
                 'slide7-frame': 840,
                 'slide8-frame': 920,
@@ -354,7 +354,7 @@
             const extraPadding = {
                 'slide3-frame': 25,
                 'slide4-frame': 15,
-                'slide5-frame': 20,  // 40에서 20으로 줄임
+                'slide5-frame': 30,  // 20에서 30으로 증가
                 'slide7-frame': 15,
                 'slide8-frame': 40,
                 'slide9-frame': 20
