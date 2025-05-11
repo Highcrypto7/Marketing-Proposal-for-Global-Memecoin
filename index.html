@@ -337,26 +337,26 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 슬라이드별 높이 설정 - 문제가 있는 슬라이드 높이 추가 증가
+            // 슬라이드별 높이 설정 - 5번 더 늘리고, 4번, 7번은 여백 줄이기
             const iframeHeights = {
                 'slide1-frame': 720,
                 'slide2-frame': 836,
-                'slide3-frame': 840,  // 820에서 840으로 증가
-                'slide4-frame': 880,  // 860에서 880으로 증가
-                'slide5-frame': 840,  // 820에서 840으로 증가
+                'slide3-frame': 840,
+                'slide4-frame': 860,  // 880에서 860으로 살짝 줄임
+                'slide5-frame': 880,  // 840에서 880으로 크게 증가
                 'slide6-frame': 720,
-                'slide7-frame': 860,
-                'slide8-frame': 920,  // 860에서 920으로 크게 증가
+                'slide7-frame': 840,  // 860에서 840으로 살짝 줄임
+                'slide8-frame': 920,
                 'slide9-frame': 820
             };
             
-            // 슬라이드 프레임에 추가 여유 공간 주기
+            // 슬라이드 프레임에 추가 여유 공간 조정
             const extraPadding = {
-                'slide3-frame': 25,  // 20에서 25로 증가
-                'slide4-frame': 30,  // 25에서 30으로 증가
-                'slide5-frame': 25,  // 20에서 25로 증가
-                'slide7-frame': 25,
-                'slide8-frame': 40,  // 25에서 40으로 크게 증가
+                'slide3-frame': 25,
+                'slide4-frame': 15,  // 30에서 15로 줄임
+                'slide5-frame': 40,  // 25에서 40으로 크게 증가
+                'slide7-frame': 15,  // 25에서 15로 줄임
+                'slide8-frame': 40,
                 'slide9-frame': 20
             };
             
