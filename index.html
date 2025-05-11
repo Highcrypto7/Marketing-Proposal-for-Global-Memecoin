@@ -337,34 +337,22 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 슬라이드별 높이 설정 - 5번 슬라이드 높이 조정
+            // 슬라이드별 고정 높이 설정
             const iframeHeights = {
                 'slide1-frame': 720,
                 'slide2-frame': 836,
                 'slide3-frame': 840,
                 'slide4-frame': 860,
-                'slide5-frame': 820,  // 760에서 820으로 증가 (이전 880보다는 작지만 760보다는 큰 값)
+                'slide5-frame': 860,  // 820에서 860으로 증가
                 'slide6-frame': 720,
                 'slide7-frame': 840,
                 'slide8-frame': 920,
                 'slide9-frame': 820
             };
             
-            // 슬라이드 프레임에 추가 여유 공간 조정
-            const extraPadding = {
-                'slide3-frame': 25,
-                'slide4-frame': 15,
-                'slide5-frame': 30,  // 20에서 30으로 증가
-                'slide7-frame': 15,
-                'slide8-frame': 40,
-                'slide9-frame': 20
-            };
-            
-            // 반응형 처리를 위한 함수
+            // 반응형 처리를 위한 간단한 함수
             function adjustIframes() {
-                const frameIds = Object.keys(iframeHeights);
-                
-                frameIds.forEach(function(id) {
+                Object.keys(iframeHeights).forEach(function(id) {
                     const iframe = document.getElementById(id);
                     if (!iframe) return;
                     
@@ -372,66 +360,33 @@
                     const containerWidth = wrapper.offsetWidth;
                     const scale = containerWidth / 1280;
                     
-                    // 기본 높이 + 추가 패딩 사용
-                    const baseHeight = iframeHeights[id];
-                    const padding = extraPadding[id] || 0;
-                    const finalHeight = baseHeight + padding;
+                    // 고정 높이 사용
+                    const height = iframeHeights[id];
                     
                     // 스케일링 적용
                     iframe.style.transform = `scale(${scale})`;
                     iframe.style.transformOrigin = 'top center';
-                    iframe.style.height = `${finalHeight}px`;
+                    iframe.style.height = `${height}px`;
                     iframe.style.position = 'relative';
                     iframe.style.left = '50%';
                     iframe.style.marginLeft = '-640px'; // 1280px의 절반
                     
                     // 래퍼 높이 설정 (스케일링된 높이)
-                    wrapper.style.height = `${finalHeight * scale}px`;
+                    wrapper.style.height = `${height * scale}px`;
                 });
             }
             
-            // 모든 iframe이 로드된 후에도 한번 더 높이 조정 (더 정확한 표시를 위해)
-            function checkAndAdjustAllFrames() {
-                const allIframes = document.querySelectorAll('iframe[id$="-frame"]');
-                let allLoaded = true;
-                
-                // 모든 iframe이 로드되었는지 확인
-                allIframes.forEach(iframe => {
-                    if (!iframe.complete) allLoaded = false;
-                });
-                
-                if (allLoaded) {
-                    // 모든 프레임이 로드되면 마지막으로 한번 더 조정
-                    setTimeout(adjustIframes, 200);
-                } else {
-                    // 아직 로드 중이라면 다시 확인
-                    setTimeout(checkAndAdjustAllFrames, 200);
-                }
-            }
-            
-            // 초기 실행 및 리사이즈 이벤트에 연결
-            window.addEventListener('load', function() {
-                adjustIframes();
-                // 추가 확인 (모든 iframe 로드 후)
-                checkAndAdjustAllFrames();
-                
-                // 완전히 로드된 후 한 번 더 최종 확인 (약간의 지연 후)
-                setTimeout(adjustIframes, 1000);
-            });
-            
-            window.addEventListener('resize', function() {
-                adjustIframes();
-            });
-            
-            // 각 iframe의 로드 이벤트
+            // 각 iframe의 로드 이벤트 처리 (간소화)
             Object.keys(iframeHeights).forEach(id => {
                 const iframe = document.getElementById(id);
                 if (iframe) {
-                    iframe.onload = function() {
-                        adjustIframes();
-                    };
+                    iframe.onload = adjustIframes; // 로드될 때 한 번만 실행
                 }
             });
+            
+            // 초기 실행 및 리사이즈 이벤트에 연결
+            window.addEventListener('load', adjustIframes);
+            window.addEventListener('resize', adjustIframes);
             
             // 네비게이션 바 메뉴 활성화 설정
             const navLinks = document.querySelectorAll('.navbar-menu a');
