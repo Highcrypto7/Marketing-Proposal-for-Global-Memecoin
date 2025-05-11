@@ -110,6 +110,7 @@
             display: block;
             transform-origin: 0 0;
             max-width: none;
+            height: 720px; /* 기본 높이 설정 */
         }
         
         /* 구분선 */
@@ -336,57 +337,47 @@
     <a href="#slide1" class="back-to-top">↑</a>
 
     <script>
+        // 슬라이드별 높이 정보를 미리 설정
+        const slideHeights = {
+            'slide1-frame': 720,
+            'slide2-frame': 836,
+            'slide3-frame': 840,
+            'slide4-frame': 860,
+            'slide5-frame': 880,  // 860에서 880으로 조금 더 증가
+            'slide6-frame': 720,
+            'slide7-frame': 840,
+            'slide8-frame': 920,
+            'slide9-frame': 820
+        };
+        
+        // 페이지 로드 시 즉시 모든 iframe 높이 설정 (빈 화면 방지)
+        window.onload = function() {
+            // 모든 iframe에 즉시 높이 및 스케일 적용
+            Object.keys(slideHeights).forEach(function(id) {
+                setIframeHeight(id);
+            });
+        };
+        
+        // 각 iframe 로드 시 높이 설정
         document.addEventListener('DOMContentLoaded', function() {
-            // 슬라이드별 고정 높이 설정
-            const iframeHeights = {
-                'slide1-frame': 720,
-                'slide2-frame': 836,
-                'slide3-frame': 840,
-                'slide4-frame': 860,
-                'slide5-frame': 860,  // 820에서 860으로 증가
-                'slide6-frame': 720,
-                'slide7-frame': 840,
-                'slide8-frame': 920,
-                'slide9-frame': 820
-            };
-            
-            // 반응형 처리를 위한 간단한 함수
-            function adjustIframes() {
-                Object.keys(iframeHeights).forEach(function(id) {
-                    const iframe = document.getElementById(id);
-                    if (!iframe) return;
-                    
-                    const wrapper = iframe.closest('.responsive-iframe-wrapper');
-                    const containerWidth = wrapper.offsetWidth;
-                    const scale = containerWidth / 1280;
-                    
-                    // 고정 높이 사용
-                    const height = iframeHeights[id];
-                    
-                    // 스케일링 적용
-                    iframe.style.transform = `scale(${scale})`;
-                    iframe.style.transformOrigin = 'top center';
-                    iframe.style.height = `${height}px`;
-                    iframe.style.position = 'relative';
-                    iframe.style.left = '50%';
-                    iframe.style.marginLeft = '-640px'; // 1280px의 절반
-                    
-                    // 래퍼 높이 설정 (스케일링된 높이)
-                    wrapper.style.height = `${height * scale}px`;
-                });
-            }
-            
-            // 각 iframe의 로드 이벤트 처리 (간소화)
-            Object.keys(iframeHeights).forEach(id => {
+            // 모든 iframe에 onload 이벤트 설정
+            Object.keys(slideHeights).forEach(function(id) {
                 const iframe = document.getElementById(id);
                 if (iframe) {
-                    iframe.onload = adjustIframes; // 로드될 때 한 번만 실행
+                    // 미리 높이를 설정하여 빈 화면 방지
+                    setIframeHeight(id);
+                    
+                    // 로드 완료 시 정확한 높이로 설정
+                    iframe.onload = function() {
+                        setIframeHeight(id);
+                    };
                 }
             });
             
-            // 초기 실행 및 리사이즈 이벤트에 연결
-            window.addEventListener('load', adjustIframes);
-            window.addEventListener('resize', adjustIframes);
+            // 창 크기 변경 시 모든 iframe 조정
+            window.addEventListener('resize', function() {
+                Object.keys(slideHeights).forEach(setIframeHeight);
+            });
             
             // 네비게이션 바 메뉴 활성화 설정
             const navLinks = document.querySelectorAll('.navbar-menu a');
@@ -430,6 +421,30 @@
                 });
             });
         });
+        
+        // iframe 높이를 설정하는 함수
+        function setIframeHeight(id) {
+            const iframe = document.getElementById(id);
+            if (!iframe) return;
+            
+            const wrapper = iframe.closest('.responsive-iframe-wrapper');
+            const containerWidth = wrapper.offsetWidth;
+            const scale = containerWidth / 1280;
+            
+            // 미리 정의된 높이 사용
+            const height = slideHeights[id];
+            
+            // iframe 스타일 설정
+            iframe.style.height = `${height}px`;
+            iframe.style.transform = `scale(${scale})`;
+            iframe.style.transformOrigin = 'top center';
+            iframe.style.position = 'relative';
+            iframe.style.left = '50%';
+            iframe.style.marginLeft = '-640px';
+            
+            // 래퍼 높이 설정
+            wrapper.style.height = `${height * scale}px`;
+        }
     </script>
 </body>
 </html>
