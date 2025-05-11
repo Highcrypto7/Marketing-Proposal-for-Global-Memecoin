@@ -337,16 +337,16 @@
     <a href="#slide1" class="back-to-top">↑</a>
 
     <script>
-        // 슬라이드별 높이 정보를 미리 설정
+        // 슬라이드별 높이 정보를 미리 설정 - 요청하신 증가치 적용
         const slideHeights = {
             'slide1-frame': 720,
             'slide2-frame': 836,
-            'slide3-frame': 840,
-            'slide4-frame': 860,
-            'slide5-frame': 880,  // 860에서 880으로 조금 더 증가
+            'slide3-frame': 860,  // 840 + 20px
+            'slide4-frame': 880,  // 860 + 20px
+            'slide5-frame': 890,  // 880 + 10px
             'slide6-frame': 720,
-            'slide7-frame': 840,
-            'slide8-frame': 920,
+            'slide7-frame': 850,  // 840 + 10px
+            'slide8-frame': 950,  // 920 + 30px
             'slide9-frame': 820
         };
         
@@ -360,14 +360,14 @@
         
         // 각 iframe 로드 시 높이 설정
         document.addEventListener('DOMContentLoaded', function() {
-            // 모든 iframe에 onload 이벤트 설정
+            // 페이지 로드 시 모든 iframe에 미리 높이 설정 (빈 화면 방지)
             Object.keys(slideHeights).forEach(function(id) {
                 const iframe = document.getElementById(id);
                 if (iframe) {
-                    // 미리 높이를 설정하여 빈 화면 방지
+                    // 미리 높이를 설정
                     setIframeHeight(id);
                     
-                    // 로드 완료 시 정확한 높이로 설정
+                    // 로드 완료 시 다시 한번 확인
                     iframe.onload = function() {
                         setIframeHeight(id);
                     };
