@@ -339,54 +339,89 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 슬라이드 프레임 목록 - 기본 높이 제거하고 실제 높이 감지
+            // 슬라이드 프레임 목록 - 기본 높이와 하단 여백 조정
             const slideFrames = [
-                { id: 'slide1-frame', defaultHeight: 720 },
-                { id: 'slide2-frame', defaultHeight: 840 },
-                { id: 'slide3-frame', defaultHeight: 720 },
-                { id: 'slide4-frame', defaultHeight: 780 },
-                { id: 'slide5-frame', defaultHeight: 720 },
-                { id: 'slide6-frame', defaultHeight: 720 },
-                { id: 'slide7-frame', defaultHeight: 780 },
-                { id: 'slide8-frame', defaultHeight: 780 },
-                { id: 'slide9-frame', defaultHeight: 720 }
+                { id: 'slide1-frame', defaultHeight: 720, bottomMargin: 30 },
+                { id: 'slide2-frame', defaultHeight: 840, bottomMargin: 30 },
+                { id: 'slide3-frame', defaultHeight: 720, bottomMargin: 30 },
+                { id: 'slide4-frame', defaultHeight: 780, bottomMargin: 30 },
+                { id: 'slide5-frame', defaultHeight: 720, bottomMargin: 30 },
+                { id: 'slide6-frame', defaultHeight: 720, bottomMargin: 30 },
+                { id: 'slide7-frame', defaultHeight: 780, bottomMargin: 30 },
+                { id: 'slide8-frame', defaultHeight: 780, bottomMargin: 30 },
+                { id: 'slide9-frame', defaultHeight: 720, bottomMargin: 30 }
             ];
             
-            // 실제 iframe 내용 높이를 감지하는 함수
+            // 실제 iframe 내용 높이를 감지하는 함수 - 하단 여백 개선
             function detectIframeHeight(iframe) {
                 try {
                     // iframe 내부 document에 접근
                     const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
                     
                     // 슬라이드 컨테이너 또는 body의 스크롤 높이 찾기
-                    const slideElement = iframeDocument.querySelector('.slide-container') || 
-                                         iframeDocument.querySelector('.slide') || 
+                    const slideElement = iframeDocument.querySelector('.slide') || 
+                                         iframeDocument.querySelector('.slide-container') || 
                                          iframeDocument.body;
                     
-                    // 실제 콘텐츠 높이 측정 (복수의 방법 시도)
-                    const contentHeight = Math.max(
-                        slideElement.scrollHeight,
-                        slideElement.offsetHeight,
-                        slideElement.clientHeight,
-                        iframeDocument.documentElement.scrollHeight,
-                        iframeDocument.documentElement.offsetHeight,
-                        iframeDocument.documentElement.clientHeight
-                    );
+                    // 마지막 자식 요소 찾기 (실제 콘텐츠의 끝)
+                    let lastElement = null;
+                    let lastElementBottom = 0;
                     
-                    // 슬라이드별 높이 조정 - 여백 문제 수정
-                    if (iframe.id === 'slide5-frame') {
-                        // 5번 슬라이드 여백 조정
-                        return contentHeight;
+                    // 모든 자식 요소를 순회하며 가장 하단에 위치한 요소 찾기
+                    const allElements = slideElement.querySelectorAll('*');
+                    allElements.forEach(el => {
+                        if (el.offsetParent !== null) { // 보이는 요소만 고려
+                            const elBottom = el.offsetTop + el.offsetHeight;
+                            if (elBottom > lastElementBottom) {
+                                lastElementBottom = elBottom;
+                                lastElement = el;
+                            }
+                        }
+                    });
+                    
+                    // 기본 높이 계산
+                    let contentHeight;
+                    
+                    if (lastElement && lastElementBottom > 0) {
+                        // 마지막 요소의 위치 + 높이 + 균일한 하단 여백
+                        const frameInfo = slideFrames.find(frame => frame.id === iframe.id);
+                        const bottomMargin = frameInfo ? frameInfo.bottomMargin : 30;
+                        contentHeight = lastElementBottom + bottomMargin;
+                    } else {
+                        // 기존 방식 - 전체 높이 측정
+                        contentHeight = Math.max(
+                            slideElement.scrollHeight,
+                            slideElement.offsetHeight,
+                            slideElement.clientHeight,
+                            iframeDocument.documentElement.scrollHeight,
+                            iframeDocument.documentElement.offsetHeight,
+                            iframeDocument.documentElement.clientHeight
+                        );
+                    }
+                    
+                    // 슬라이드별 특수 처리
+                    if (iframe.id === 'slide1-frame') {
+                        return contentHeight + 30; // 약간 더 여백 추가
+                    } else if (iframe.id === 'slide2-frame') {
+                        return contentHeight + 20; // 여백 조정
+                    } else if (iframe.id === 'slide3-frame') {
+                        return contentHeight + 30;
+                    } else if (iframe.id === 'slide4-frame') {
+                        return contentHeight + 30;
+                    } else if (iframe.id === 'slide5-frame') {
+                        return contentHeight + 25;
+                    } else if (iframe.id === 'slide6-frame') {
+                        return contentHeight + 30;
                     } else if (iframe.id === 'slide7-frame') {
-                        // 7번 슬라이드 여백 조정
-                        return contentHeight;
+                        return contentHeight + 25;
+                    } else if (iframe.id === 'slide8-frame') {
+                        return contentHeight + 30;
                     } else if (iframe.id === 'slide9-frame') {
-                        // 9번 슬라이드 여백 조정
-                        return contentHeight;
+                        return contentHeight + 35; // 마지막 슬라이드는 약간 더 여백 추가
                     }
                     
                     // 기본 높이는 그대로 유지
-                    return contentHeight;
+                    return contentHeight + 30; // 모든 슬라이드에 기본 30px 여백 추가
                     
                 } catch (e) {
                     console.error('iframe 높이 감지 오류:', e);
@@ -398,14 +433,7 @@
             
             // 반응형 처리 함수
             function adjustIframes() {
-                const containerWidths = {};
                 const containers = document.querySelectorAll('.slide-container');
-                
-                // 각 컨테이너의 실제 너비 측정
-                containers.forEach(container => {
-                    const id = container.id;
-                    containerWidths[id] = container.offsetWidth;
-                });
                 
                 slideFrames.forEach(function(frame) {
                     const iframe = document.getElementById(frame.id);
@@ -434,6 +462,22 @@
                 });
             }
             
+            // iframe 로드 완료 확인 함수 (슬라이드 높이 계산 신뢰성 향상)
+            function checkAllIframesLoaded() {
+                const allIframesLoaded = slideFrames.every(frame => {
+                    const iframe = document.getElementById(frame.id);
+                    return iframe && (iframe.complete || iframe.contentWindow);
+                });
+                
+                if (allIframesLoaded) {
+                    // 모든 iframe이 로드되면 최종 조정
+                    setTimeout(adjustIframes, 500); // 약간의 지연을 두고 최종 조정
+                } else {
+                    // 아직 로드 중인 iframe이 있으면 다시 확인
+                    setTimeout(checkAllIframesLoaded, 200);
+                }
+            }
+            
             // 각 iframe의 로드 이벤트 처리
             slideFrames.forEach(function(frame) {
                 const iframe = document.getElementById(frame.id);
@@ -451,7 +495,11 @@
             });
             
             // 초기 실행 및 리사이즈 이벤트에 연결
-            window.addEventListener('load', adjustIframes);
+            window.addEventListener('load', function() {
+                adjustIframes();
+                // 모든 iframe이 로드되었는지 확인
+                checkAllIframesLoaded();
+            });
             window.addEventListener('resize', adjustIframes);
             
             // 네비게이션 바 메뉴 활성화 설정
