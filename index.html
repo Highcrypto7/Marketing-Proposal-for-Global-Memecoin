@@ -92,16 +92,15 @@
             width: 100%;
             max-width: 1280px;
             margin: 0 auto;
+            margin-bottom: 20px;
             box-sizing: border-box;
-            padding: 0 10px;
         }
         
-        /* 반응형 iframe 컨테이너 - 클리핑 컨테이너 */
+        /* 반응형 iframe 컨테이너 */
         .responsive-iframe-wrapper {
             position: relative;
             width: 100%;
             margin: 0 auto;
-            overflow: hidden; /* 중요: 넘치는 부분 숨김 */
         }
         
         iframe {
@@ -110,15 +109,14 @@
             display: block;
             transform-origin: 0 0;
             max-width: none;
-            height: 0; /* 초기 높이 0으로 설정하고 JS에서 동적으로 계산 */
         }
         
-        /* 구분선 - 명확한 여백 지정 */
+        /* 구분선 */
         .slide-divider {
             height: 3px;
             background: linear-gradient(to right, transparent, #FFD700, transparent);
             width: 80%;
-            margin: 30px auto; /* 위아래 30px 균일한 여백 */
+            margin: 0 auto 20px auto;
         }
         
         /* 맨 위로 가기 버튼 */
@@ -338,204 +336,50 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // 슬라이드 높이 매핑
-            const hardCodedHeights = {
-                'slide1-frame': { height: 720, extraBottom: 0 },
-                'slide2-frame': { height: 836, extraBottom: 0 },
-                'slide3-frame': { height: 720, extraBottom: 0 },
-                'slide4-frame': { height: 780, extraBottom: 0 }, 
-                'slide5-frame': { height: 720, extraBottom: 0 },
-                'slide6-frame': { height: 720, extraBottom: 0 },
-                'slide7-frame': { height: 780, extraBottom: 0 },
-                'slide8-frame': { height: 780, extraBottom: 0 },
-                'slide9-frame': { height: 720, extraBottom: 0 }
+            // 단순히 고정된 높이 사용하기
+            const iframeHeights = {
+                'slide1-frame': 720,
+                'slide2-frame': 836,
+                'slide3-frame': 720,
+                'slide4-frame': 780,
+                'slide5-frame': 720,
+                'slide6-frame': 720,
+                'slide7-frame': 780,
+                'slide8-frame': 780,
+                'slide9-frame': 720
             };
             
-            // iframe 내부의 불필요한 여백을 제거하는 함수
-            function removeBottomSpace(iframe) {
-                try {
-                    // iframe의 문서에 접근
-                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    
-                    // iframe 내부 스타일 조작 - 하단 여백/패딩 제거
-                    const styleEl = iframeDoc.createElement('style');
-                    styleEl.textContent = `
-                        /* 모든 하단 여백 강제 제거 */
-                        body { margin-bottom: 0 !important; padding-bottom: 0 !important; }
-                        .slide { margin-bottom: 0 !important; padding-bottom: 0 !important; min-height: auto !important; }
-                        
-                        /* 하단에 위치한 모든 요소들의 여백 제거 */
-                        .bottom-decoration, 
-                        [class*="bottom"], 
-                        [class*="footer"], 
-                        [class*="decoration"] { 
-                            margin-bottom: 0 !important; 
-                            padding-bottom: 0 !important;
-                        }
-                        
-                        /* absolute 포지셔닝된 요소들의 하단 위치 조정 */
-                        [style*="bottom:"] {
-                            bottom: 0 !important;
-                        }
-                    `;
-                    iframeDoc.head.appendChild(styleEl);
-                    
-                    // 모든 스크립트 실행 제한 (불필요한 높이 변경 방지)
-                    const scripts = iframeDoc.querySelectorAll('script:not([src])');
-                    scripts.forEach(script => {
-                        if (script.textContent.includes('height') || 
-                            script.textContent.includes('margin') || 
-                            script.textContent.includes('bottom')) {
-                            script.textContent = ''; // 높이 관련 인라인 스크립트 제거
-                        }
-                    });
-                    
-                } catch (e) {
-                    console.error('iframe 내부 여백 제거 실패:', e);
-                }
-            }
-            
-            // 실제 컨텐츠 높이를 정확히 측정하는 함수
-            function getTrueContentHeight(iframe) {
-                try {
-                    // iframe 문서에 접근
-                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    const slideEl = iframeDoc.querySelector('.slide');
-                    
-                    if (!slideEl) return hardCodedHeights[iframe.id].height;
-                    
-                    // 마지막 내용물 찾기
-                    let lastElementBottom = 0;
-                    
-                    // 보이는 모든 요소를 확인 (이미지, 텍스트 블록 등)
-                    const visibleElements = Array.from(slideEl.querySelectorAll('*')).filter(el => {
-                        const style = window.getComputedStyle(el);
-                        return style.display !== 'none' && 
-                               style.visibility !== 'hidden' && 
-                               parseFloat(style.opacity) > 0 && 
-                               el.offsetParent !== null;
-                    });
-                    
-                    // 각 요소의 실제 하단 위치 확인
-                    visibleElements.forEach(el => {
-                        // 요소의 실제 하단 위치 계산
-                        const bottom = el.offsetTop + el.offsetHeight;
-                        if (bottom > lastElementBottom) {
-                            lastElementBottom = bottom;
-                        }
-                    });
-                    
-                    // 마지막 요소가 발견되었으면 해당 높이 사용, 그렇지 않으면 기본값 사용
-                    if (lastElementBottom > 0) {
-                        // 마지막 요소의 하단 경계 + 아주 작은 여유 공간
-                        return lastElementBottom + 10; // 10px 정도 여유 공간 추가
-                    }
-                    
-                    // 발견 실패시 하드코딩된 값 사용
-                    return hardCodedHeights[iframe.id].height;
-                    
-                } catch (e) {
-                    console.error('컨텐츠 높이 측정 실패:', e);
-                    return hardCodedHeights[iframe.id].height;
-                }
-            }
-            
-            // iframe 높이를 설정하고 스케일링하는 함수
-            function setupIframe(iframe) {
-                // iframe 내부 여백 제거
-                removeBottomSpace(iframe);
+            // 반응형 처리를 위한 간단한 함수
+            function adjustIframes() {
+                const frameIds = Object.keys(iframeHeights);
                 
-                // wrapper 및 컨테이너 요소 가져오기
-                const wrapper = iframe.closest('.responsive-iframe-wrapper');
-                const container = wrapper.closest('.slide-container');
-                const containerWidth = container.offsetWidth;
-                
-                // 스케일링 비율 계산 (1280px 기준)
-                const scale = containerWidth / 1280;
-                
-                // 슬라이드 실제 컨텐츠 높이 계산
-                const contentHeight = getTrueContentHeight(iframe);
-                
-                // 슬라이드별 추가 설정
-                const extraSpace = hardCodedHeights[iframe.id] ? hardCodedHeights[iframe.id].extraBottom : 0;
-                const adjustedHeight = contentHeight + extraSpace;
-                
-                // iframe 스타일 설정
-                iframe.style.transform = `scale(${scale})`;
-                iframe.style.transformOrigin = 'top center';
-                iframe.style.width = '1280px';
-                iframe.style.height = `${adjustedHeight}px`;
-                iframe.style.position = 'relative';
-                iframe.style.left = '50%';
-                iframe.style.marginLeft = '-640px';
-                
-                // 래퍼 높이 설정 (스케일링된 높이)
-                wrapper.style.height = `${adjustedHeight * scale}px`;
-            }
-            
-            // 모든 iframe이 로드되었는지 확인하는 함수
-            function checkAllIframesLoaded() {
-                const iframes = document.querySelectorAll('iframe[id$="-frame"]');
-                let allLoaded = true;
-                
-                iframes.forEach(iframe => {
-                    try {
-                        // iframe 문서에 접근 시도
-                        const doc = iframe.contentDocument || iframe.contentWindow.document;
-                        if (!doc || doc.readyState !== 'complete') {
-                            allLoaded = false;
-                        }
-                    } catch (e) {
-                        allLoaded = false;
-                    }
+                frameIds.forEach(function(id) {
+                    const iframe = document.getElementById(id);
+                    if (!iframe) return;
+                    
+                    const wrapper = iframe.closest('.responsive-iframe-wrapper');
+                    const containerWidth = wrapper.offsetWidth;
+                    const scale = containerWidth / 1280;
+                    
+                    // 고정 높이 사용
+                    const height = iframeHeights[id];
+                    
+                    // 스케일링 적용
+                    iframe.style.transform = `scale(${scale})`;
+                    iframe.style.transformOrigin = 'top center';
+                    iframe.style.height = `${height}px`;
+                    iframe.style.position = 'relative';
+                    iframe.style.left = '50%';
+                    iframe.style.marginLeft = '-640px'; // 1280px의 절반
+                    
+                    // 래퍼 높이 설정 (스케일링된 높이)
+                    wrapper.style.height = `${height * scale}px`;
                 });
-                
-                return allLoaded;
             }
-            
-            // 모든 iframe 로드 및 설정
-            function setupAllIframes() {
-                const iframes = document.querySelectorAll('iframe[id$="-frame"]');
-                
-                iframes.forEach(iframe => {
-                    if (iframe.contentDocument || iframe.contentWindow) {
-                        setupIframe(iframe);
-                    }
-                });
-                
-                // 모든 iframe이 로드되었는지 확인
-                if (!checkAllIframesLoaded()) {
-                    // 아직 로드 중인 iframe이 있으면 약간 지연 후 다시 시도
-                    setTimeout(setupAllIframes, 200);
-                }
-            }
-            
-            // 각 iframe의 로드 이벤트 처리
-            const iframes = document.querySelectorAll('iframe[id$="-frame"]');
-            iframes.forEach(iframe => {
-                iframe.onload = function() {
-                    setupIframe(this);
-                    
-                    // DOM이 완전히 로드된 후 한번 더 셋업 (더 정확한 높이 계산을 위해)
-                    setTimeout(() => {
-                        setupIframe(this);
-                    }, 300);
-                };
-            });
             
             // 초기 실행 및 리사이즈 이벤트에 연결
-            window.addEventListener('load', function() {
-                setupAllIframes();
-                // 최종 조정 (지연 적용)
-                setTimeout(setupAllIframes, 500);
-            });
-            
-            // 리사이즈 최적화 (디바운싱)
-            let resizeTimer;
-            window.addEventListener('resize', function() {
-                clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(setupAllIframes, 100);
-            });
+            window.addEventListener('load', adjustIframes);
+            window.addEventListener('resize', adjustIframes);
             
             // 네비게이션 바 메뉴 활성화 설정
             const navLinks = document.querySelectorAll('.navbar-menu a');
@@ -547,7 +391,6 @@
                 
                 sections.forEach(function(section) {
                     const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
                     if(pageYOffset >= (sectionTop - 200)) {
                         current = section.getAttribute('id');
                     }
